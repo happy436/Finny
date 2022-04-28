@@ -20,8 +20,8 @@ const RoundStat = () => {
         }
     }
     return (
-        <section className={`${s.menu} ${data ? s.active : ""} flex-grow-10`}>
-            <menu className={`${s.toggle} d-flex flex-column align-items-center`}>
+        <section className={`${s.menu} ${data ? s.active : ""} mb-5`}>
+            <menu className={`${s.toggle} d-flex flex-column align-items-center justify-content-center`}>
                 <span className="text-success">3000$</span>
                 <span className="text-danger">30000$</span>
                 <span className="text-info">30000$</span>
@@ -35,7 +35,7 @@ const RoundStat = () => {
                     >
                         {data ? getIcon(data.categories[0].icon) : ""}
                     </NavLink>
-                    <span className="d-flex justify-content-center text-danger">
+                    <span className="d-flex justify-content-center text-danger mt-1">
                         {data ? Math.round((data.categories[0].value * 100) / 32000) : ""}%
                     </span>
                 </li>

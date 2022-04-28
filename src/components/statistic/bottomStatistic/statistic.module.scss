@@ -1,0 +1,33 @@
+.statistic {
+    background: linear-gradient(180deg, #8efff8 0%, rgba(112, 255, 62, 0) 100%);
+    box-shadow: inset 2px 5px 11px -2px #ffffff;
+    border-radius: 51px;
+    min-width:100vw;
+    height: 200px;
+    margin-top:50px;
+
+    .horizBlock{
+        min-width: 200px;
+        min-height: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        margin-top:15px;
+
+        .line{
+            opacity: 1;
+            background-color: #fff;
+            color:#fff;
+            height: 3px;
+            width: 200px;
+            margin:3px 0px 3px 0px;
+        }
+        .line:nth-child(2){
+            width: 150px;
+        }
+        .line:nth-child(3){
+            width: 100px;
+        }
+    }
+}

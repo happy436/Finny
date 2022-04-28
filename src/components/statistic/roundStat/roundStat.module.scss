@@ -3,11 +3,12 @@ ul {
 }
 .menu {
     position: relative;
-    width: 320px;
-    height: 300px;
+    width: 400px;
+    height: 310px;
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top:100px;
 }
 
 .menu li {
@@ -15,7 +16,7 @@ ul {
     left: 20px;
     top: 120px;
     list-style: none;
-    transform-origin: 160px;
+    transform-origin: 200px;
     transition: 0.5s;
     transition-delay: calc(0.1s * var(--i));
     transform: rotate(0deg) translateX(100px);
@@ -52,8 +53,8 @@ a svg {
 
 .toggle {
     position: absolute;
-    width: 150px;
-    height: 150px;
+    width: 200px;
+    height: 200px;
     background: #fff;
     display: flex;
     justify-content: center;
