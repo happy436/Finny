@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react"
 import { NavLink } from "react-router-dom"
 import s from "./roundStat.module.scss"
 import { UilUser, UilEnvelope, UilHome, UilMusic, UilSetting } from "@iconscout/react-unicons"
-import API from "../../../api"
+import API from "../../../../../api"
 
 const RoundStat = () => {
     const [data, setData] = useState()
