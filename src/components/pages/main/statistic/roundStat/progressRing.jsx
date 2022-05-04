@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import s from "./roundStat.module.css"
+import s from "./roundStat.module.scss"
 import PropTypes from "prop-types"
 
 function ProgressRing({ percent, data }) {

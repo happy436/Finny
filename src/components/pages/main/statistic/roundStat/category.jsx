@@ -1,6 +1,6 @@
 import React from "react"
 import { NavLink } from "react-router-dom"
-import s from "./roundStat.module.css"
+import s from "./roundStat.module.scss"
 import PropTypes from "prop-types"
 import ProgressRing from "./progressRing"
 

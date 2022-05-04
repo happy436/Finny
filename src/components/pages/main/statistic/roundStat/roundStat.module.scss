@@ -3,22 +3,21 @@ ul {
 }
 .menu {
     position: relative;
-    width: 400px;
-    height: 310px;
+    width: 280px;
+    height: 300px;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top:100px;
 }
 
 .menu li {
     position: absolute;
-    left: 20px;
-    top: 120px;
     list-style: none;
-    transform-origin: 200px;
+    transform-origin: 140px;
     transition: 0.5s;
     transition-delay: calc(0.1s * var(--i));
+    left: 0;
+    top: 120px;
     transform: rotate(0deg) translateX(100px);
 }
 
@@ -36,10 +35,10 @@ ul {
     justify-content: center;
     align-items: center;
     border-radius: 50%;
-    transform: rotate(calc(360deg / -8 * var(--i)));
     box-shadow: 0 3px 4px rgba(0, 0, 0, 0.15);
     color: #111;
     transition: 0.5s;
+    position: relative;
 }
 
 a svg {
@@ -53,8 +52,8 @@ a svg {
 
 .toggle {
     position: absolute;
-    width: 200px;
-    height: 200px;
+    width: 140px;
+    height: 140px;
     background: #fff;
     display: flex;
     justify-content: center;
@@ -63,9 +62,34 @@ a svg {
     border-radius: 50%;
     cursor: pointer;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
-    font-size: 2em;
     transition: transform 1.25s;
     overflow: hidden;
     opacity: 1;
-    font-size: 25px;
+    font-size: 20px;
+}
+
+.progress_ring{
+    position: absolute;
+    top:0;
+    left:0;
+    z-index:10;
+    width: 60px;
+    height: 60px;
+}
+
+.progress_ring .circle{
+    position: absolute;
+    top:0;
+    left:0;
+    stroke-width: 4;
+    fill:transparent;
+    transform: translateX(30px) translateY(30px) rotate(270deg);
+    transform-origin: top left;
+}
+
+.percent{
+    display: flex;
+    justify-content: center;
+    margin-top: 0.1rem;
+    font-size: 13px;
 }
