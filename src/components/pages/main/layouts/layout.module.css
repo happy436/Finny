@@ -1,0 +1,26 @@
+.main_layout.bg{
+    background: linear-gradient(180deg, #FD8AFF 0%, rgba(250, 255, 27, 0.67) 100%);
+}
+
+.main_layout.bg nav svg{
+    height: 40px;
+    width: 40px;
+    fill:#fff;
+}
+
+.main_layout.bg nav button{
+    background-color:transparent;
+}
+
+.date{
+    font-size: 30px;
+    color:#fff;
+}
+
+.day{
+    font-size:3rem;
+    margin-bottom: 0px;
+}
+.month{
+    font-size: 2rem;
+}

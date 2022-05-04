@@ -1,0 +1,95 @@
+ul {
+    top: 20px;
+}
+.menu {
+    position: relative;
+    width: 280px;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.menu li {
+    position: absolute;
+    list-style: none;
+    transform-origin: 140px;
+    transition: 0.5s;
+    transition-delay: calc(0.1s * var(--i));
+    left: 0;
+    top: 120px;
+    transform: rotate(0deg) translateX(100px);
+}
+
+.menu.active li {
+    left: 0;
+    top: 120px;
+    transform: rotate(calc(360deg / 8 * var(--i)));
+}
+
+.menu li a {
+    background: #fff;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    box-shadow: 0 3px 4px rgba(0, 0, 0, 0.15);
+    color: #111;
+    transition: 0.5s;
+    position: relative;
+}
+
+a svg {
+    width: 100%;
+    height: 30px;
+}
+
+.menu li a:hover {
+    color: #ff1252;
+}
+
+.toggle {
+    position: absolute;
+    width: 140px;
+    height: 140px;
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+    transition: transform 1.25s;
+    overflow: hidden;
+    opacity: 1;
+    font-size: 20px;
+}
+
+.progress_ring{
+    position: absolute;
+    top:0;
+    left:0;
+    z-index:10;
+    width: 60px;
+    height: 60px;
+}
+
+.progress_ring .circle{
+    position: absolute;
+    top:0;
+    left:0;
+    stroke-width: 4;
+    fill:transparent;
+    transform: translateX(30px) translateY(30px) rotate(270deg);
+    transform-origin: top left;
+}
+
+.percent{
+    display: flex;
+    justify-content: center;
+    margin-top: 0.1rem;
+    font-size: 13px;
+}

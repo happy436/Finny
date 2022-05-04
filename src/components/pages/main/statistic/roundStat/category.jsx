@@ -1,28 +1,40 @@
 import React from "react"
 import { NavLink } from "react-router-dom"
-import s from "./roundStat.module.scss"
+import s from "./roundStat.module.css"
 import PropTypes from "prop-types"
+import ProgressRing from "./progressRing"
 
-const Category = ({ data, getIcon }) => {
+const Category = ({ data, getIcon, count, index }) => {
+    const { value, icon, color } = data
+    const percent = value ? Math.round((value * 100) / 32000) : 0
+    const liStyle = {
+        "--i": index/* ,
+        transform: `rotate(calc(360deg / ${count} * var(--i)))` */
+    }
+    const anchorStyle = {
+        transform: `rotate(calc(360deg / -${count} * var(--i)))`
+    }
     return (
-        <li className={s.item} style={{ "--i": 0 }}>
+        <li
+            className={s.item}
+            style={liStyle}>
             <NavLink
                 to="/bubbly/profile/"
                 className={(isActive) => isActive ? `${s.active}` : ""}
-            /* onClick={showContent} */
+                style={anchorStyle}
             >
-                {data ? getIcon(data.categories[0].icon) : ""}
+                <ProgressRing data={data} percent={percent} />
+                {data ? getIcon(icon, color) : ""}
             </NavLink>
-            <span className="d-flex justify-content-center text-danger mt-1">
-                {data ? Math.round((data.categories[0].value * 100) / 32000) : ""}%
-            </span>
         </li>
     )
 }
 
 Category.propTypes = {
-    data: PropTypes.object.isRequired,
-    getIcon: PropTypes.func.isRequired
+    data: PropTypes.object,
+    getIcon: PropTypes.func.isRequired,
+    count: PropTypes.number,
+    index: PropTypes.number
 }
 
 export default Category
