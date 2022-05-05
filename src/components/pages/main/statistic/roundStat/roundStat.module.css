@@ -1,3 +1,5 @@
+
+
 ul {
     top: 20px;
 }
@@ -16,9 +18,8 @@ ul {
     transform-origin: 140px;
     transition: 0.5s;
     transition-delay: calc(0.1s * var(--i));
-    left: 0;
-    top: 120px;
     transform: rotate(0deg) translateX(100px);
+    left:0;
 }
 
 .menu.active li {
@@ -51,9 +52,10 @@ a svg {
 }
 
 .toggle {
+    --width:140px;
     position: absolute;
-    width: 140px;
-    height: 140px;
+    width: var(--width);
+    height: var(--width);
     background: #fff;
     display: flex;
     justify-content: center;
@@ -63,9 +65,10 @@ a svg {
     cursor: pointer;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
     transition: transform 1.25s;
-    overflow: hidden;
+    /* overflow: hidden; */
     opacity: 1;
     font-size: 20px;
+    z-index:2;
 }
 
 .progress_ring{
@@ -93,3 +96,31 @@ a svg {
     margin-top: 0.1rem;
     font-size: 13px;
 }
+
+@keyframes calling {
+    0%{
+        transform: scale(1);
+        opacity: 0.8
+    }
+    100%{
+        transform: scale(2);
+        opacity: 0;
+    }
+}
+
+.call{
+    --a:100px;
+    content:"";
+    width: var(--a);
+    height: var(--a);
+    border-radius: 50%;
+    position: absolute;
+    animation: calling 2s ease infinite;
+    background: #fff;
+    z-index:-2;
+}
+
+.call:nth-child(2){
+    animation-delay: 0.5s;
+}
+

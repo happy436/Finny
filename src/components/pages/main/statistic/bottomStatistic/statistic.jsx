@@ -9,6 +9,9 @@ const Statistic = () => {
                 <hr className={s.line}/>
                 <hr className={s.line}/>
             </span>
+            <span>
+                aaaaaaaaaaaaaaaaaaa
+            </span>
         </section>
     )
 }

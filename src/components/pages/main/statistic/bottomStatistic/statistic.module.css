@@ -1,12 +1,14 @@
 .statistic {
-    background: linear-gradient(180deg, #8efff8 0%, rgba(112, 255, 62, 0) 100%);
+    background: linear-gradient(180deg, #8efff8 0%, rgba(112, 255, 62, 100) 100%);
     box-shadow: inset 2px 5px 11px -2px #ffffff;
-    border-radius: 51px;
+    border-radius: 50px 50px 0 0;
     min-width:100vw;
     height: 200px;
     margin-top:50px;
-
-    
+    z-index:100;
+    min-height: 100%;
+    bottom:-600px;
+    position: absolute;
 }
 
 .statistic .horizBlock{
