@@ -10,7 +10,7 @@ const Statistic = () => {
                 <hr className={s.line}/>
             </span>
             <span>
-                aaaaaaaaaaaaaaaaaaa
+
             </span>
         </section>
     )

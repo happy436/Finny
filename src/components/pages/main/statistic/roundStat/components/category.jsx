@@ -4,9 +4,14 @@ import s from "../roundStat.module.css"
 import PropTypes from "prop-types"
 import ProgressRing from "./progressRing"
 
-const Category = ({ data, getIcon, count, index, active }) => {
-    const { value, icon, color } = data
-    const percent = value ? Math.round((value * 100) / 32000) : 0
+const Category = ({ data, getIcon, count, index, active, allSpending }) => {
+    const { transaction, icon, color } = data
+    const value = transaction.reduce((prev, curr) => {
+        let result = 0
+        result = prev.value + curr.value
+        return result
+    })
+    const percent = Math.round((value * 100) / allSpending)
     const liStyle = {
         "--i": index
     }
@@ -38,7 +43,8 @@ Category.propTypes = {
     getIcon: PropTypes.func,
     count: PropTypes.number,
     index: PropTypes.number,
-    active: PropTypes.string
+    active: PropTypes.string,
+    allSpending: PropTypes.number
 }
 
 export default Category

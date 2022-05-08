@@ -1,44 +1,132 @@
 const data = {
-    categories: [
+    spendingCategories: [
         {
-            icon: "UilUser",
-            value: 10000,
-            color: "#147BC5"
+            icon: "UilDumbbell",
+            color: "#147BC5",
+            transaction: [
+                {
+                    id: "01.01.2022",
+                    value: 100
+                },
+                {
+                    id: "02.01.2022",
+                    value: 2000
+                }
+            ]
         },
         {
-            icon: "UilUser",
-            value: 10000,
-            color: "#147BC5"
+            icon: "UilPizzaSlice",
+            color: "#F29C4C",
+            transaction: [
+                {
+                    id: "01.01.2022",
+                    value: 2000
+                },
+                {
+                    id: "02.01.2022",
+                    value: 2021
+                }
+            ]
         },
         {
-            icon: "UilUser",
-            value: 10000,
-            color: "#147BC5"
+            icon: "UilEstate",
+            color: "#1FCEE5",
+            transaction: [
+                {
+                    id: "01.01.2022",
+                    value: 542
+                },
+                {
+                    id: "02.01.2022",
+                    value: 234
+                }
+            ]
         },
         {
-            icon: "UilUser",
-            value: 10000,
-            color: "#147BC5"
+            icon: "UilMedicalSquareFull",
+            color: "#F24C4C",
+            transaction: [
+                {
+                    id: "01.01.2022",
+                    value: 1324
+                },
+                {
+                    id: "02.01.2022",
+                    value: 2154
+                }
+            ]
         },
         {
-            icon: "UilUser",
-            value: 10000,
-            color: "#147BC5"
+            icon: "UilCarSideview",
+            color: "#FD38A2",
+            transaction: [
+                {
+                    id: "01.01.2022",
+                    value: 254
+                },
+                {
+                    id: "02.01.2022",
+                    value: 3546
+                }
+            ]
         },
         {
-            icon: "UilUser",
-            value: 10000,
-            color: "#147BC5"
+            icon: "UilShoppingBag",
+            color: "#5DBF2F",
+            transaction: [
+                {
+                    id: "01.01.2022",
+                    value: 456
+                },
+                {
+                    id: "02.01.2022",
+                    value: 154
+                }
+            ]
         },
         {
-            icon: "UilUser",
-            value: 10000,
-            color: "#147BC5"
+            icon: "UilPricetagAlt",
+            color: "#D06400",
+            transaction: [
+                {
+                    id: "01.01.2022",
+                    value: 100
+                },
+                {
+                    id: "02.01.2022",
+                    value: 2000
+                }
+            ]
         },
         {
+            icon: "UilDesktop",
+            color: "#1D00D0",
+            transaction: [
+                {
+                    id: "01.01.2022",
+                    value: 100
+                },
+                {
+                    id: "02.01.2022",
+                    value: 2000
+                }
+            ]
+        }
+    ],
+    incomeCategories: [
+        {
             icon: "UilUser",
-            value: 10000,
-            color: "#147BC5"
+            color: "#147BC5",
+            transaction: [
+                {
+                    id: "01.01.2022",
+                    value: 100
+                },
+                {
+                    id: "02.01.2022",
+                    value: 2000
+                }
+            ]
         }
     ]
 }
@@ -53,71 +141,3 @@ const fetchAll = () =>
 export default {
     fetchAll
 }
-
-const datta = {
-    spendingCategories: [
-        {
-            icon: "a",
-            color: "red",
-            list: [
-                {
-                    year: "2022",
-                    list: [
-                        {
-                            month: "10.2022",
-                            list: [
-                                {
-                                    day: "01.10.2022",
-                                    value: 100
-                                },
-                                {
-                                    day: "02.10.2022",
-                                    value: 100
-                                }
-                            ]
-                        },
-                        {
-                            month: "11.2022",
-                            list: [
-                                {
-                                    day: "01.11.2022",
-                                    value: 100
-                                },
-                                {
-                                    day: "02.11.2022",
-                                    value: 100
-                                }
-                            ]
-                        }
-                    ]
-                }
-            ]
-        }
-    ],
-    incomeCategories: [
-        {
-            icon: "a",
-            list: [
-                {
-                    id: "01.10.2022",
-                    value: 100
-                },
-                {
-                    id: "01.10.2022",
-                    value: 100
-                }
-
-            ]
-        }
-    ]
-}
-const result = datta.spendingCategories[0].list.map(item => {
-    let result = 0
-    item.list.map(item => (
-        item.list.map(item => (
-            result = result + item.value
-        ))
-    ))
-    return result
-})
-console.log(...result)

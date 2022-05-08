@@ -13,26 +13,43 @@ function TextField({ label, type, name, value, onChange, error }) {
 
     return (
         <div className={`mb-4 d-flex flex-column align-items-center`}>
-            <label htmlFor={name} className={`${s.subtitle} ${s.colorPrim}`}>{label}</label>
+            <label htmlFor={name} className={`${s.subtitle} ${s.colorPrim}`}>
+                {label}
+            </label>
             <div className="input-group has-validation">
                 <input
-                    className={`${getInputClasses()} ${s.input} ${type === "password" ? s.borderRadiusLeft : s.borderRadius}`}
+                    className={`${getInputClasses()} ${s.input} ${
+                        type === "password" ? (
+                            s.borderRadiusLeft) : (
+                            s.borderRadius)
+                    }`}
                     type={showPassword ? "text" : type}
                     id={name}
                     name={name}
                     value={value}
                     onChange={onChange}
+                    placeholder={
+                        type !== "password" ? "Type your email" : "Type your password"
+                    }
                 />
-                {type === "password" && <button
-                    className={`btn btn-outline-secondary ${s.input} ${type === "password" ? s.borderRadiusRight : ""}`}
-                    type="button"
-                    onClick={toggleShowPassword}
-                >
-                    <i className={"bi bi-eye" + (showPassword ? "-slash" : "")}></i>
-                </button>}
+                {type === "password" && (
+                    <button
+                        className={`btn btn-outline-secondary ${
+                            type === "password" ? s.borderRadiusRight : ""
+                        }`}
+                        type="button"
+                        onClick={toggleShowPassword}
+                    >
+                        <i
+                            className={
+                                "bi bi-eye" + (showPassword ? "-slash" : "")
+                            }
+                        ></i>
+                    </button>
+                )}
                 {error && <div className="invalid-feedback">{error}</div>}
             </div>
-        </div >
+        </div>
     )
 }
 TextField.defaultProps = {

@@ -50,7 +50,7 @@ const Login = () => {
             <div style={{ zIndex: "3" }}>
                 <div className="row">
                     <div className={`col-md-6 offset-md-3 p-4 ${s.formWrapper}`}>
-                        <h3 className={`${s.title} ${s.colorPrim}`}>Login</h3>
+                        <h3 className={`${s.title} ${s.colorPrim}`}>Finny</h3>
                         <form onSubmit={handleSubmit}>
                             <TextField
                                 name="email"
