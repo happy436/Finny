@@ -3,7 +3,6 @@
     box-shadow: inset 2px 5px 11px -2px #ffffff;
     border-radius: 50px 50px 0 0;
     min-width:100%;
-    height: 200px;
     margin-top:50px;
     z-index:100;
     min-height: 100%;
@@ -34,4 +33,75 @@
 }
 .statistic .horizBlock .line:nth-child(3){
     width: 100px;
+}
+
+.statistic .category{
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 30px 20px 30px;
+    align-items: center;
+}
+
+.statistic .category .data{
+    display: flex;
+}
+
+.statistic .category .number{
+    margin: 0;
+}
+
+.statistic .category .icon{
+    width: 20px;
+    height: 20px;
+}
+
+.statistic .category .arrow{
+    transition: transform .3s;
+}
+
+.statistic .category .activeCategory{
+    transform: rotate(180deg);
+}
+
+.statistic .categoryData{
+    display: none;
+}
+
+.statistic .categoryData.active{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, .2);
+}
+
+.statistic .categoryData .data{
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 55px 10px 60px;
+}
+
+.green{
+    color:#2ca10f
+}
+
+.red{
+    color:#f8000c
+}
+
+.countTransaction{
+    --width: 20px;
+    background-color: #2ca10f;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    height: var(--width);
+    width: var(--width);
+    color:#fff;
+    font-size: 12px;
+}
+
+.statistic h4{
+    margin-bottom: 0;
+    margin: 0 5px 0 10px;
 }

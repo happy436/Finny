@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react"
 import s from "./layout.module.css"
 import commonStyle from "../../common/style.module.css"
-/* import { regular } from "@fortawesome/fontawesome-svg-core/import.macro" */
 import {
     UilBars,
     UilEllipsisV,
@@ -12,16 +11,21 @@ import {
     UilMedicalSquareFull,
     UilCarSideview,
     UilPricetagAlt,
-    UilDesktop
+    UilDesktop,
+    UilMoneyWithdraw
 } from "@iconscout/react-unicons"
 import RoundStat from "./statistic/roundStat/roundStat.main"
 import Button from "./button"
 import Statistic from "./statistic/bottomStatistic/statistic.main"
 import API from "./../../../api"
 import Context from "../../context"
+import SortMenu from "./menus/sortMenu/sortMenu"
+import Menu from "./menus/menu"
 
 const Main = () => {
     const [data, setData] = useState()
+    const [activeSortMenu, setActiveSortMenu] = useState(false)
+    const [activeMenu, setActiveMenu] = useState(false)
     useEffect(() => {
         API.data.fetchAll().then(data => {
             setData(data)
@@ -45,15 +49,17 @@ const Main = () => {
                 return <UilPricetagAlt style={{ fill: color }} />
             case "UilDesktop":
                 return <UilDesktop style={{ fill: color }} />
+            case "UilMoneyWithdraw":
+                return <UilMoneyWithdraw style={{ fill: color }} />
         }
     }
-    const sortType = {
+    const listSortType = {
         day: "day",
         week: "week",
         month: "month",
         year: "year"
     }
-    const [sortData/*, setSortData */] = useState(sortType.day)
+    const [sortData, setSortData] = useState(listSortType.day)
     const setDate = new Date()
     const day = setDate.getDate()
     const oneJan = new Date(setDate.getFullYear(), 0, 1)
@@ -78,20 +84,20 @@ const Main = () => {
     ]
     const handleSortData = type => {
         switch (type) {
-            case sortType.day:
+            case listSortType.day:
                 return (
                     <>
                         <h2 className={s.day}>{day < 10 ? `0${day}` : day}</h2>
                         <h3 className={s.month}>{monthList[month]}</h3>
                     </>
                 )
-            case sortType.week:
+            case listSortType.week:
                 return (
                     <h2 className={s.day}>{week < 10 ? `0${week}` : week}</h2>
                 )
-            case sortType.month:
+            case listSortType.month:
                 return <h3 className={s.month}>{monthList[month]}</h3>
-            case sortType.year:
+            case listSortType.year:
                 return <h2 className={s.day}>{year}</h2>
         }
     }
@@ -107,10 +113,10 @@ const Main = () => {
                     }
                 >
                     <nav className="d-flex justify-content-between p-3 w-100 flex-shrink-1">
-                        <button>
+                        <button onClick={() => activeSortMenu ? setActiveSortMenu(false) : setActiveSortMenu(true)}>
                             <UilBars />
                         </button>
-                        <button>
+                        <button onClick={() => activeMenu ? setActiveMenu(false) : setActiveMenu(true)}>
                             <UilEllipsisV />
                         </button>
                     </nav>
@@ -126,7 +132,17 @@ const Main = () => {
                         <Button type="increment" />
                     </section>
                 </section>
-                <Statistic /></> : null}
+                <Statistic data={data} /></> : null}
+                <SortMenu
+                    active={activeSortMenu}
+                    typeList={listSortType}
+                    setType={setSortData}
+                    setActive={setActiveSortMenu}
+                />
+                <Menu
+                    active={activeMenu}
+                    setActive={setActiveMenu}
+                />
             </main>
         </Context.Provider>
     )
