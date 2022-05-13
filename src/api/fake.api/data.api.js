@@ -8,7 +8,7 @@ const data = {
         {
             id: getId(),
             name: "Salary",
-            icon: "UilMoneyWithdraw",
+            icon: "UilCreditCard",
             color: "#147BC5",
             transaction: [
                 {
@@ -167,7 +167,10 @@ const data = {
                 }
             ]
         }
-    ]
+    ],
+    currency: "$",
+    language: "eng",
+    themeColor: "pink"
 }
 
 const fetchAll = () =>

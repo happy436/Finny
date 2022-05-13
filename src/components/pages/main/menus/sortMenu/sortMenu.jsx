@@ -1,14 +1,19 @@
-import React from "react"
+import React, { useEffect } from "react"
 import PropTypes from "prop-types"
 import s from "./sortMenu.module.css"
 
 function SortMenu({ active, typeList, setType, setActive }) {
     window.scrollTo(0, 0)
-    if (active) {
-        document.body.style.overflowY = "hidden"
-    } else {
-        document.body.style.overflowY = ""
-    }
+    useEffect(() => {
+        if (active) {
+            document.body.style.overflowY = "hidden"
+            document.documentElement.style.overflowY = "hidden"
+        } else {
+            document.body.style.overflowY = ""
+            document.documentElement.style.overflowY = ""
+        }
+    }, [active])
+
     function render(data) {
         return Object.values(data).map(item => {
             return (

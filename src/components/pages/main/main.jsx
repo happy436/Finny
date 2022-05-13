@@ -12,7 +12,8 @@ import {
     UilCarSideview,
     UilPricetagAlt,
     UilDesktop,
-    UilMoneyWithdraw
+    UilMoneyWithdraw,
+    UilCreditCard
 } from "@iconscout/react-unicons"
 import RoundStat from "./statistic/roundStat/roundStat.main"
 import Button from "./button"
@@ -51,6 +52,8 @@ const Main = () => {
                 return <UilDesktop style={{ fill: color }} />
             case "UilMoneyWithdraw":
                 return <UilMoneyWithdraw style={{ fill: color }} />
+            case "UilCreditCard":
+                return <UilCreditCard style={{ fill: color }} />
         }
     }
     const listSortType = {
@@ -132,7 +135,12 @@ const Main = () => {
                         <Button type="increment" />
                     </section>
                 </section>
-                <Statistic data={data} /></> : null}
+                <Statistic data={
+                    {
+                        incomeCategories: data.incomeCategories,
+                        spendingCategories: data.spendingCategories
+                    }
+                } />
                 <SortMenu
                     active={activeSortMenu}
                     typeList={listSortType}
@@ -142,7 +150,9 @@ const Main = () => {
                 <Menu
                     active={activeMenu}
                     setActive={setActiveMenu}
-                />
+                    data={data}
+                /></> : null}
+
             </main>
         </Context.Provider>
     )

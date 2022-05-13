@@ -18,7 +18,7 @@ function Account({ onActiveClass, allIncome, allSpending }) {
             />
             <AccountData
                 styleClass={"text-info"}
-                value={3000}
+                value={0}
                 currency={"$"} // заменить
             />
         </main>

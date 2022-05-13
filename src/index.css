@@ -85,6 +85,10 @@ select {
     }
 }
 
+ul{
+    list-style-type: none;
+}
+
 #root{
     min-height: 100vh;
 }
