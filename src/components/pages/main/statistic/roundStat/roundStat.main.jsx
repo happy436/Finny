@@ -33,6 +33,7 @@ const RoundStat = ({ data }) => {
                 onActiveClass={handleActiveClass}
                 allIncome={allIncome}
                 allSpending={allSpending}
+                currency={data.currency.chooseCurrency}
             />
             {Object.keys(data).length !== 0 ? (
                 <>

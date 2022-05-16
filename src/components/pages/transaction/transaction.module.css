@@ -1,0 +1,97 @@
+.wrapper{
+    min-width: 100vw;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background: linear-gradient(159.56deg, rgba(255, 255, 255, 0.4) -8.52%, rgba(255, 255, 255, 0.1) 112.08%);
+    box-shadow: 0px 4px 24px -1px rgba(0, 0, 0, 0.2);
+    border-radius: 40px;
+    backdrop-filter: blur(40px);
+    padding: 20px;
+}
+
+.numericalPad{
+    display: grid; 
+    grid-template-columns: 1fr 1fr 1fr 1fr; 
+    grid-template-rows: 1fr 1fr 1fr 1fr; 
+    gap: 0px 0px; 
+    grid-template-areas: 
+    "n n n n"
+    "n n n n"
+    "n n n n"
+    "n n n n"
+    "b b b b"; 
+    gap:5px;
+    margin:10px 0 10px 0;
+}
+
+.numItem{
+    --size: 60px;
+    width: var(--size);
+    height: var(--size);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(159.56deg, rgba(255, 255, 255, 0.4) -8.52%, rgba(255, 255, 255, 0.1) 112.08%);
+    box-shadow: 0px 4px 24px -1px rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+    backdrop-filter: blur(40px);
+}
+
+.numItem button:active{
+    box-shadow: 
+        inset -2px -4px 25px -8px rgba(0, 0, 0, 0.75),
+        inset 9px 13px 24px -8px rgba(0, 0, 0, 0.75);
+    transform: translateY(3px);
+}
+
+.numItem:last-child{
+    grid-area: b;
+    width: 100%;
+}
+
+.notionWrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin: 20px 0 0 0;
+    gap:5px;
+}
+
+.notionWrapper input{
+    background-color: inherit;
+    border-bottom: solid 1px #000;
+    width: 100%;
+}
+
+.inputFormWrapper{
+    width: 100%;
+    border:solid 1px #fff;
+    border-radius: 10px;
+    padding: 5px;
+    margin: 20px 0 0 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.chooseCategoryBtn{
+    border-right: solid 1px #fff;
+    padding: 5px;
+}
+
+.cancelBtn{
+    transform: rotate(180deg);
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}

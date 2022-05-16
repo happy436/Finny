@@ -98,7 +98,7 @@ const Login = () => {
                         position: "absolute",
                         width: "135px",
                         height: "126px",
-                        left: "284px",
+                        right: "60px",
                         top: "446px",
                         background: "radial-gradient(126.67% 145.41% at 106.67% 57.54%, #B56AFF 0%, #0649C7 100%)",
                         borderRadius: "50%",

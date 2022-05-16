@@ -1,6 +1,7 @@
 import React from "react"
 import { UilPlus, UilMinus } from "@iconscout/react-unicons"
 import s from "./button.module.css"
+import { NavLink } from "react-router-dom"
 
 const Button = ({ type }) => {
     const renderButton = () => {
@@ -8,13 +9,17 @@ const Button = ({ type }) => {
             case "increment":
                 return (
                     <button className={`${s.button} ${s.increment}`}>
-                        <UilPlus />
+                        <NavLink to="/transaction/income">
+                            <UilPlus />
+                        </NavLink>
                     </button>
                 )
             case "decrement":
                 return (
                     <button className={`${s.button} ${s.decrement}`}>
-                        <UilMinus />
+                        <NavLink to="/transaction/spending">
+                            <UilMinus />
+                        </NavLink>
                     </button>
                 )
         }

@@ -41,15 +41,14 @@ function Menu({ active, setActive, data }) {
             img: currency,
             name: "currency",
             data: {
-                currency: data.currency
+                ...data.currency
             }
         },
         {
             img: settings,
             name: "settings",
             data: {
-                language: data.language,
-                themeColor: data.themeColor
+                ...data.settings
             }
         }
     ]

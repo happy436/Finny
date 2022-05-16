@@ -168,9 +168,19 @@ const data = {
             ]
         }
     ],
-    currency: "$",
-    language: "eng",
-    themeColor: "pink"
+    currency: {
+        chooseCurrency: "$",
+        currencyList: {
+            USA: "$",
+            UAH: "₴",
+            RUB: "₽",
+            EUR: "€"
+        }
+    },
+    settings: {
+        language: "eng",
+        theme: "pink"
+    }
 }
 
 const fetchAll = () =>

@@ -170,3 +170,29 @@
     flex-direction: column;
     gap:10px;
 }
+
+.currencyItem{
+    display: flex;
+    align-items: center;
+    gap:30px;
+    margin: 20px;
+    width: max-content;
+    padding: 5px;
+}
+
+.currencyItem p{
+    margin: 0;
+}
+
+.currencyItem.active{
+    border: solid 1px #fff;
+}
+
+.optionItem .settingsList{
+    margin: 20px 0 0 20px;
+}
+
+.settingsItem{
+    display: flex;
+    gap:10px
+}

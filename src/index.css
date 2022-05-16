@@ -11,7 +11,7 @@ ol[class] {
     padding: 0;
 }
 
-p{
+p {
     margin: 0;
 }
 
@@ -26,14 +26,14 @@ h2,
 h3,
 h4,
 p,
-ul[class],
 ol[class],
 li,
 figure,
 figcaption,
 blockquote,
 dl,
-dd {
+dd,
+p {
     margin: 0;
 }
 
@@ -100,4 +100,8 @@ menu{
     margin-inline-start: 0px;
     margin-inline-end: 0px;
     padding-inline-start: 0px;
+}
+
+button{
+    background-color: inherit;
 }
