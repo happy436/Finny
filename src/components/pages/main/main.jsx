@@ -1,20 +1,6 @@
 import React, { useEffect, useState } from "react"
 import s from "./layout.module.css"
 import commonStyle from "../../common/style.module.css"
-import {
-    UilBars,
-    UilEllipsisV,
-    UilDumbbell,
-    UilPizzaSlice,
-    UilShoppingBag,
-    UilEstate,
-    UilMedicalSquareFull,
-    UilCarSideview,
-    UilPricetagAlt,
-    UilDesktop,
-    UilMoneyWithdraw,
-    UilCreditCard
-} from "@iconscout/react-unicons"
 import RoundStat from "./statistic/roundStat/roundStat.main"
 import Button from "./button"
 import Statistic from "./statistic/bottomStatistic/statistic.main"
@@ -22,6 +8,8 @@ import API from "./../../../api"
 import Context from "../../context"
 import SortMenu from "./menus/sortMenu/sortMenu"
 import Menu from "./menus/menu"
+import Loader from "../../common/loader"
+import { getIcon } from "../../common/getSVGIcon/getIcon"
 
 const Main = () => {
     const [data, setData] = useState()
@@ -32,30 +20,6 @@ const Main = () => {
             setData(data)
         })
     }, [])
-    const getIcon = (icon, color) => {
-        switch (icon) {
-            case "UilDumbbell":
-                return <UilDumbbell style={{ fill: color }} />
-            case "UilPizzaSlice":
-                return <UilPizzaSlice style={{ fill: color }} />
-            case "UilEstate":
-                return <UilEstate style={{ fill: color }} />
-            case "UilMedicalSquareFull":
-                return <UilMedicalSquareFull style={{ fill: color }} />
-            case "UilCarSideview":
-                return <UilCarSideview style={{ fill: color }} />
-            case "UilShoppingBag":
-                return <UilShoppingBag style={{ fill: color }} />
-            case "UilPricetagAlt":
-                return <UilPricetagAlt style={{ fill: color }} />
-            case "UilDesktop":
-                return <UilDesktop style={{ fill: color }} />
-            case "UilMoneyWithdraw":
-                return <UilMoneyWithdraw style={{ fill: color }} />
-            case "UilCreditCard":
-                return <UilCreditCard style={{ fill: color }} />
-        }
-    }
     const listSortType = {
         day: "day",
         week: "week",
@@ -117,10 +81,10 @@ const Main = () => {
                 >
                     <nav className="d-flex justify-content-between p-3 w-100 flex-shrink-1">
                         <button onClick={() => activeSortMenu ? setActiveSortMenu(false) : setActiveSortMenu(true)}>
-                            <UilBars />
+                            {getIcon("UilBars")}
                         </button>
                         <button onClick={() => activeMenu ? setActiveMenu(false) : setActiveMenu(true)}>
-                            <UilEllipsisV />
+                            {getIcon("UilEllipsisV")}
                         </button>
                     </nav>
                     <time
@@ -151,8 +115,7 @@ const Main = () => {
                     active={activeMenu}
                     setActive={setActiveMenu}
                     data={data}
-                /></> : null}
-
+                /></> : <Loader/>}
             </main>
         </Context.Provider>
     )

@@ -1,18 +1,43 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 /* import PropTypes from "prop-types" */
 import s from "./transaction.module.css"
 import commonStyle from "../../common/style.module.css"
 import { useParams } from "react-router-dom"
 import { UilPen, UilCancel } from "@iconscout/react-unicons"
+import API from "../../../api"
+import { getIcon } from "../../common/getSVGIcon/getIcon"
+import Loader from "../../common/loader"
 
 function TransactionPage() {
+    const [activePad, setActivePad] = useState(false)
+    const [data, setData] = useState()
     const { type } = useParams()
+    useEffect(() => {
+        API.data.fetchAll().then(data => {
+            setData(
+                type === "income"
+                    ? data.incomeCategories.map(item => ({
+                        id: item.id,
+                        name: item.name,
+                        icon: item.icon,
+                        color: item.color
+                    }))
+                    : data.spendingCategories.map(item => ({
+                        id: item.id,
+                        name: item.name,
+                        icon: item.icon,
+                        color: item.color
+                    }))
+            )
+        })
+    }, [])
+    console.log(data)
     const [typeTrans] = useState(type === "income" ? type : "spending")
     const [num/* , setNum */] = useState("0")
     const numericalButton = [
         {
             name: "one",
-            keydown: 97, // найти значения
+            keydown: 97,
             value: 1
         },
         {
@@ -92,60 +117,102 @@ function TransactionPage() {
         },
         {
             name: "chooseCategory",
+            style: { gridArea: "b", width: "100%" },
             keydown: 13,
-            value: "Choose category"
+            value: "Choose category",
+            onClick: () => setActivePad(true)
         }
     ]
+    const handleSubmit = e => {
+        e.preventDefault()
+    }
     return (
-        <section className={`${s.wrapper} ${commonStyle.bg}`}>
-            <form className={s.form}>
-                <header>
-                    {typeTrans === "income" ? "New income" : "New spending"}
-                </header>
-                <main style={{ width: "100%" }}>
-                    <div className={s.inputFormWrapper}>
-                        <span className={s.chooseCategoryBtn}>icon</span>
-                        <label>{num}</label>
-                        <button className={s.cancelBtn}>
-                            <UilCancel />
-                        </button>
-                    </div>
-                    <div className={s.notionWrapper}>
-                        <UilPen />
-                        <input
-                            /* onKeyDown={(e) => {
+        <>
+            <section className={`${s.wrapper} ${commonStyle.bg}`}>
+                {activePad ? <button className={s.back}>
+                    {getIcon("UilArrowLeft")}
+                </button> : null}
+                {data ? (
+                    <form className={s.form} onSubmit={handleSubmit}>
+                        <header>
+                            {typeTrans === "income"
+                                ? "New income"
+                                : "New spending"}
+                        </header>
+                        <main style={{ width: "100%" }}>
+                            <div className={s.inputFormWrapper}>
+                                <span></span>
+                                <label>{num}</label>
+                                <button className={s.cancelBtn}>
+                                    <UilCancel />
+                                </button>
+                            </div>
+                            <div className={s.notionWrapper}>
+                                <UilPen />
+                                <input
+                                    /* onKeyDown={(e) => {
                                 console.log(e.keyCode)
                             }}
                             value={num}
                             onChange={e => setNum(e.target.value)} */
-                            placeholder={"Notion"}
-                        />
-                    </div>
-                </main>
-                <hr style={{ width: "100%" }} />
-                <div>
-                    <ul className={s.numericalPad}>
-                        {numericalButton.map(item => {
-                            return (
-                                <li
-                                    key={item.name}
-                                    className={s.numItem}
-                                >
-                                    <button>
-                                        {item.value}
-                                    </button>
-                                </li>
-                            )
-                        })}
-                    </ul>
-                </div>
-            </form>
-        </section>
+                                    placeholder={"Notion"}
+                                />
+                            </div>
+                        </main>
+                        <hr style={{ width: "100%" }} />
+                        <div>
+                            <ul
+                                className={`${s.numericalPad} ${
+                                    !activePad ? s.active : ""
+                                }`}
+                            >
+                                {numericalButton.map(item => {
+                                    return (
+                                        <li
+                                            key={item.name}
+                                            className={s.numItem}
+                                            style={item.style}
+                                        >
+                                            <button
+                                                className={s.numButton}
+                                                onClick={item.onClick}
+                                            >
+                                                {item.value}
+                                            </button>
+                                        </li>
+                                    )
+                                })}
+                            </ul>
+                            <ul
+                                className={`${s.categoryPad} ${
+                                    activePad ? s.active : ""
+                                }`}
+                            >
+                                {data.map(item => {
+                                    return (
+                                        <li
+                                            key={item.id}
+                                            className={s.categoryItem}
+                                        >
+                                            <button
+                                                className={s.categoryButton}
+                                            >
+                                                {getIcon(item.icon, item.color)}
+                                            </button>
+                                        </li>
+                                    )
+                                })}
+                            </ul>
+                        </div>
+                    </form>
+                ) : (
+                    <Loader />
+                )}
+            </section>
+        </>
     )
 }
 
-TransactionPage.propTypes = {
-
-}
+TransactionPage.propTypes = {}
 
 export default TransactionPage
