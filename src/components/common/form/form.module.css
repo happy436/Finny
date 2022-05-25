@@ -1,0 +1,38 @@
+form .subtitle {
+    font-family: "Rochester", cursive;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 25px;
+}
+
+form .borderRadius {
+    border-radius: 20px;
+}
+
+form .borderRadiusLeft {
+    border-radius: 20px 0 0 20px;
+}
+
+.colorPrim {
+    color: #0085ff;
+}
+
+form .borderRadiusRight {
+    border-radius: 0 20px 20px 0;
+}
+
+input {
+    border: none;
+}
+
+form .input {
+    box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+form .input:focus {
+    
+}
+
+form .input::placeholder {
+    font-family: "Rochester", cursive;
+}

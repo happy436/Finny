@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react"
-/* import PropTypes from "prop-types" */
 import s from "./transaction.module.css"
 import commonStyle from "../../common/style.module.css"
 import { useParams } from "react-router-dom"
@@ -7,6 +6,7 @@ import { UilPen, UilCancel } from "@iconscout/react-unicons"
 import API from "../../../api"
 import { getIcon } from "../../common/getSVGIcon/getIcon"
 import Loader from "../../common/loader"
+import CardWrapper from "../../common/Card/Card"
 
 function TransactionPage() {
     const [activePad, setActivePad] = useState(false)
@@ -128,87 +128,94 @@ function TransactionPage() {
     }
     return (
         <>
-            <section className={`${s.wrapper} ${commonStyle.bg}`}>
-                {activePad ? <button className={s.back}>
-                    {getIcon("UilArrowLeft")}
-                </button> : null}
+            <main className={`${s.wrapper} ${commonStyle.bg}`}>
+                {activePad ? (
+                    <button className={s.back} onClick={() => setActivePad(false)}>
+                        {getIcon("UilArrowLeft")}
+                    </button>
+                ) : null}
                 {data ? (
-                    <form className={s.form} onSubmit={handleSubmit}>
-                        <header>
-                            {typeTrans === "income"
-                                ? "New income"
-                                : "New spending"}
-                        </header>
-                        <main style={{ width: "100%" }}>
-                            <div className={s.inputFormWrapper}>
-                                <span></span>
-                                <label>{num}</label>
-                                <button className={s.cancelBtn}>
-                                    <UilCancel />
-                                </button>
-                            </div>
-                            <div className={s.notionWrapper}>
-                                <UilPen />
-                                <input
-                                    /* onKeyDown={(e) => {
+                    <CardWrapper>
+                        <form className={s.form} onSubmit={handleSubmit}>
+                            <header>
+                                {typeTrans === "income"
+                                    ? "New income"
+                                    : "New spending"}
+                            </header>
+                            <main style={{ width: "100%" }}>
+                                <div className={s.inputFormWrapper}>
+                                    <span></span>
+                                    <label>{num}</label>
+                                    <button className={s.cancelBtn}>
+                                        <UilCancel />
+                                    </button>
+                                </div>
+                                <div className={s.notionWrapper}>
+                                    <UilPen />
+                                    <input
+                                        /* onKeyDown={(e) => {
                                 console.log(e.keyCode)
                             }}
                             value={num}
                             onChange={e => setNum(e.target.value)} */
-                                    placeholder={"Notion"}
-                                />
+                                        placeholder={"Notion"}
+                                    />
+                                </div>
+                            </main>
+                            <hr style={{ width: "100%" }} />
+                            <div>
+                                <ul
+                                    className={`${s.numericalPad} ${
+                                        !activePad ? s.active : ""
+                                    }`}
+                                >
+                                    {numericalButton.map(item => {
+                                        return (
+                                            <li
+                                                key={item.name}
+                                                className={s.numItem}
+                                                style={item.style}
+                                            >
+                                                <button
+                                                    className={s.numButton}
+                                                    onClick={item.onClick}
+                                                >
+                                                    {item.value}
+                                                </button>
+                                            </li>
+                                        )
+                                    })}
+                                </ul>
+                                <ul
+                                    className={`${s.categoryPad} ${
+                                        activePad ? s.active : ""
+                                    }`}
+                                >
+                                    {data.map(item => {
+                                        return (
+                                            <li
+                                                key={item.id}
+                                                className={s.categoryItem}
+                                            >
+                                                <button
+                                                    className={s.categoryButton}
+                                                >
+                                                    {getIcon(
+                                                        item.icon,
+                                                        item.color
+                                                    )}
+                                                </button>
+                                            </li>
+                                        )
+                                    })}
+                                </ul>
                             </div>
-                        </main>
-                        <hr style={{ width: "100%" }} />
-                        <div>
-                            <ul
-                                className={`${s.numericalPad} ${
-                                    !activePad ? s.active : ""
-                                }`}
-                            >
-                                {numericalButton.map(item => {
-                                    return (
-                                        <li
-                                            key={item.name}
-                                            className={s.numItem}
-                                            style={item.style}
-                                        >
-                                            <button
-                                                className={s.numButton}
-                                                onClick={item.onClick}
-                                            >
-                                                {item.value}
-                                            </button>
-                                        </li>
-                                    )
-                                })}
-                            </ul>
-                            <ul
-                                className={`${s.categoryPad} ${
-                                    activePad ? s.active : ""
-                                }`}
-                            >
-                                {data.map(item => {
-                                    return (
-                                        <li
-                                            key={item.id}
-                                            className={s.categoryItem}
-                                        >
-                                            <button
-                                                className={s.categoryButton}
-                                            >
-                                                {getIcon(item.icon, item.color)}
-                                            </button>
-                                        </li>
-                                    )
-                                })}
-                            </ul>
-                        </div>
-                    </form>
+                        </form>
+                    </CardWrapper>
                 ) : (
                     <Loader />
                 )}
-            </section>
+            </main>
         </>
     )
 }

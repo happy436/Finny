@@ -3,11 +3,11 @@ import "./loader.css"
 
 function Loader() {
     return (
-        <div className="containerLoader">
-            <div className="loader">
-                Spend money wisely
-            </div>
-        </div>
+        <article className="containerLoader">
+            <span className="loader">
+                <p id="text">Spend money wisely</p>
+            </span>
+        </article>
     )
 }
 

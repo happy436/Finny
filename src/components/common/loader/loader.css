@@ -19,7 +19,11 @@
     color:#fff;
 }
 
-.loader:before {
+#text{
+	text-align: center;
+}
+
+.loader:after {
 	position: absolute;
 	content: '';
 	width: 100%;

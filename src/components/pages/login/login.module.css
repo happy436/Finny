@@ -1,38 +1,8 @@
-div.formWrapper {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    background: linear-gradient(159.56deg, rgba(255, 255, 255, 0.4) -8.52%, rgba(255, 255, 255, 0.1) 112.08%);
-    box-shadow: 0px 4px 24px -1px rgba(0, 0, 0, 0.2);
-    border-radius: 40px;
-    backdrop-filter: blur(40px);
-    max-width: 270px;
-}
 .title {
     font-size: 40px;
     font-family: 'Sofia', cursive;
     font-style: normal;
     font-weight: 400;
-}
-
-.subtitle {
-    font-family: 'Rochester', cursive;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 25px;
-}
-
-.colorPrim {
-    color: #0085ff;
-}
-
-.form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 50px;
 }
 
 .inputWrapper {
@@ -42,36 +12,11 @@ div.formWrapper {
     justify-content: center;
 }
 
-input {
-    border: none;
+.colorPrim {
+    color: #0085ff;
 }
 
-.formWrapper .input {
-    background: linear-gradient(95.65deg, rgba(255, 255, 255, 0.2) -6.44%, rgba(0, 0, 0, 0) 97.25%);
-    box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
-}
-
-.formWrapper .input:focus {
-    background: inherit;
-}
-
-.formWrapper .input::placeholder {
-    font-family: 'Rochester', cursive;
-}
-
-.formWrapper .borderRadius {
-    border-radius: 20px;
-}
-
-.formWrapper .borderRadiusLeft {
-    border-radius: 20px 0 0 20px;
-}
-
-.formWrapper .borderRadiusRight {
-    border-radius: 0 20px 20px 0;
-}
-
-.formWrapper .submit {
+form .submit {
     background: linear-gradient(90deg, #56aeff -3.15%, #e43cff 104.33%);
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), inset -3px -3px 4px rgba(0, 0, 0, 0.25),
         inset 0px 4px 4px rgba(255, 255, 255, 0.25);
@@ -81,16 +26,63 @@ input {
     font-weight: 400;
     font-size: 20px;
     color: #ffffff;
+    grid-area:l;
+    max-height: 45px;
 }
 
-.forgPass {
-    margin-top: 10px;
+form .submit:hover{
+    color:#fff;
+}
+
+form .submit:focus-within{
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), inset -3px -3px 4px rgba(0, 0, 0, 0.25),
+        inset 0px 4px 4px rgba(255, 255, 255, 0.25),
+        0 0 0 0.25rem rgb(13 110 253 / 25%);
+}
+
+form .submit:active{
+    box-shadow: none;
+}
+
+.link {
+    display: flex;
+    justify-content: center;
     font-family: "Rochester";
     font-style: normal;
     font-weight: 400;
-    font-size: 15px;
+    font-size: 20px;
     line-height: 19px;
     text-decoration-line: underline;
     cursor: pointer;
-    color: #000000;
+}
+
+.text{
+    display: flex;
+    justify-content: center;
+    margin: 0;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    gap:10px;
+}
+
+@media(min-width:768px){
+    .container{
+        display: grid;
+        grid-template-columns: 1fr 1fr; 
+        grid-template-rows: 1fr 1fr 1fr; 
+        grid-template-areas: 
+            "r f"
+            "l l"
+            "nr cra";
+        align-items: center;
+        gap:5px 10px;
+        };
+        
+        .link:nth-of-type(1){
+            grid-area: f;
+            margin-top: 0;
+        }
 }
