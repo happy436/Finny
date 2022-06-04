@@ -2,7 +2,7 @@ import React, { useState } from "react"
 import PropTypes from "prop-types"
 import s from "./form.module.css"
 
-const TextField = ({ label, type, name, value, onChange, error, ...rest }) => {
+const TextField = ({ label, type, name, value, onChange, error, placeholder, ...rest }) => {
     const [showPassword, setShowPassword] = useState(false)
     const getInputClasses = () => {
         return "form-control" + (error ? " is-invalid" : "")
@@ -10,7 +10,6 @@ const TextField = ({ label, type, name, value, onChange, error, ...rest }) => {
     const toggleShowPassword = () => {
         setShowPassword((prevState) => !prevState)
     }
-
     const handleChange = ({ target }) => {
         onChange({ name: target.name, value: target.value })
     }
@@ -30,9 +29,7 @@ const TextField = ({ label, type, name, value, onChange, error, ...rest }) => {
                             s.borderRadiusLeft) : (
                             s.borderRadius)
                     }`}
-                    placeholder={
-                        type !== "password" ? "Type your email" : "Type your password"
-                    }
+                    placeholder={placeholder}
                     {...rest}
                 />
 
@@ -63,7 +60,8 @@ TextField.propTypes = {
     name: PropTypes.string,
     value: PropTypes.string,
     onChange: PropTypes.func,
-    error: PropTypes.string
+    error: PropTypes.string,
+    placeholder: PropTypes.string
 }
 
 export default React.memo(TextField)

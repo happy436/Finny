@@ -8,3 +8,14 @@
     border-radius: 40px;
     backdrop-filter: blur(40px);
 }
+
+@media (min-width:320px){
+    .cardWrapper{
+        width:280px;
+    }
+}
+@media (min-width:425px){
+    .cardWrapper{
+        width:400px;
+    }
+}

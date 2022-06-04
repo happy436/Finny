@@ -10,35 +10,35 @@ const FormComponent = ({
 }) => {
     const [data, setData] = useState(defaultData || {})
     const [errors, setErrors] = useState({})
-    const handleChange = useCallback((target) => {
-        setData((prevState) => ({
+    const handleChange = useCallback(target => {
+        setData(prevState => ({
             ...prevState,
             [target.name]: target.value
         }))
     }, [])
     const validate = useCallback(
-        (data) => {
+        data => {
             const errors = validator(data, validatorConfig)
             setErrors(errors)
             return Object.keys(errors).length === 0
         },
         [validatorConfig, setErrors]
     )
-    const handleSubmit = (e) => {
+    const handleSubmit = e => {
         e.preventDefault()
         const isValid = validate()
-        if (!isValid) return 1
-        if (Object.keys(data).length !== 0) {
+        if (isValid) {
             onSubmit(data)
             console.log(data)
         }
     }
     useEffect(() => {
-        if (Object.keys(data).length > 0) {
-            validate(data)
-        }
+        validate(data)
+        console.log(!isValid)
+        console.log(errors)
     }, [data])
-    const handleKeyDown = useCallback((event) => {
+
+    const handleKeyDown = useCallback(event => {
         if (event.keyCode === 13) {
             event.preventDefault()
             const form = event.target.form
@@ -48,8 +48,7 @@ const FormComponent = ({
     }, [])
 
     const isValid = Object.keys(errors).length === 0
-
-    const clonedElements = React.Children.map(children, (child) => {
+    const clonedElements = React.Children.map(children, child => {
         const childType = typeof child.type
         let config = {}
         if (childType === "object") {
@@ -79,7 +78,15 @@ const FormComponent = ({
         }
         return React.cloneElement(child, config)
     })
-    return <form onSubmit={handleSubmit} className={"d-flex flex-column p-3"}>{clonedElements}</form>
+    return (
+        <form
+            onSubmit={handleSubmit}
+            style={{ width: "100%" }}
+            className={"d-flex flex-column p-3"}
+        >
+            {clonedElements}
+        </form>
+    )
 }
 FormComponent.propTypes = {
     children: PropTypes.oneOfType([
