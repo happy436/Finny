@@ -13,6 +13,11 @@
     display: flex;
 }
 
+a{
+    color:inherit;
+    width:24px;
+}
+
 .menu.active{
     transform:translateX(0);
     display:flex;

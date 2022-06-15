@@ -1,11 +1,12 @@
-import React, { useContext } from "react"
+import React from "react"
 import PropTypes from "prop-types"
-import Context from "../../../../../context"
 import s from "../menu.module.css"
 import { UilPlus, UilExchange } from "@iconscout/react-unicons"
+import { useImage } from "../../../../../../hooks/useImage"
+import { NavLink } from "react-router-dom"
 
 function OptionMenu({ type, data }) {
-    const { getIcon } = useContext(Context)
+    const { getIcon } = useImage()
     const setCurrency = (currenctSymbol) => {
         console.log(currenctSymbol)
     }
@@ -16,28 +17,28 @@ function OptionMenu({ type, data }) {
                     <>
                         <span className={s.optionMenuHeader}>
                             <b>Spending</b>
-                            <button>
+                            <NavLink to="/category/spending">
                                 <UilPlus />
-                            </button>
+                            </NavLink>
                         </span>
                         <ul>
                             {data.spendingCategories.map(item => (
                                 <li key={item.id} className={s.optionMenuItem}>
-                                    {getIcon(item.icon, "#FFF")}
+                                    {getIcon(item.icon)}
                                     <p>{item.name[0].toUpperCase() + item.name.slice(1)}</p>
                                 </li>
                             ))}
                         </ul>
                         <span className={s.optionMenuHeader}>
                             <b>Income</b>
-                            <button>
+                            <NavLink to="/category/income">
                                 <UilPlus />
-                            </button>
+                            </NavLink>
                         </span>
                         <ul>
                             {data.incomeCategories.map(item => (
                                 <li key={item.id} className={s.optionMenuItem}>
-                                    {getIcon(item.icon, "#FFF")}
+                                    {getIcon(item.icon)}
                                     <p>{item.name[0].toUpperCase() + item.name.slice(1)}</p>
                                 </li>
                             ))}

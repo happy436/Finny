@@ -4,7 +4,7 @@ import CardWrapper from "../../common/Card/Card"
 import { CheckBoxField, TextField } from "../../common/form"
 /* import { useHistory } from "react-router-dom" */
 import PropTypes from "prop-types"
-import { validator } from "../../utils/validator"
+import { validator } from "../../../utils/validator"
 
 const LoginForm = ({ typeChange }) => {
     /* const history = useHistory() */

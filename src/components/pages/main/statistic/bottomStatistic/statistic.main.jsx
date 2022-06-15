@@ -20,16 +20,28 @@ const Statistic = ({ data }) => {
             })
         })
     }
+    const summ = 9999
+    const currency = "$"
+    const renderSumm = (number) => {
+        if (number < 10000 && number > -10000) {
+            return number.toFixed(2) + currency
+        } else {
+            return number + currency
+        }
+    }
 
     return (
         <section className={`${s.statistic} flex-column d-flex`}>
             <span className={s.horizBlock}>
+                <h2 className={`${s.summ} ${summ >= 0 ? s.green : s.red}`}>{renderSumm(summ)}</h2>
                 <hr className={s.line} />
                 <hr className={s.line} />
                 <hr className={s.line} />
             </span>
             <span>
-                {render(data)}
+                <ul className={s.list}>
+                    {render(data)}
+                </ul>
             </span>
         </section>
     )

@@ -3,7 +3,7 @@ import PropTypes from "prop-types"
 
 const CheckBoxField = ({ name, value, onChange, children, error, style }) => {
     const handleChange = () => {
-        onChange({ name: name, value: !value })
+        onChange({ name, value: !value })
     }
     const getInputClasses = () => {
         return "form-check-input" + (error ? " is-invalid" : "")
@@ -23,7 +23,7 @@ const CheckBoxField = ({ name, value, onChange, children, error, style }) => {
                     onChange={handleChange}
                     checked={value}
                 />
-                <label className="form-check-label is-Invalid" htmlFor={name}>
+                <label className="form-check-label is-invalid" htmlFor={name}>
                     {children}
                 </label>
                 {error && <div className="invalid-feedback">{error}</div>}

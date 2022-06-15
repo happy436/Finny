@@ -1,0 +1,108 @@
+.wrapper{
+    min-width: 100vw;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 10px;
+}
+
+.submit{
+    --size: 80px;
+    width: var(--size);
+    height: var(--size);
+    background-color: #fff;
+    border-radius: 50%;
+    opacity: 0;
+    position: absolute;
+    bottom:0;
+    transition:all 1s;
+}
+
+.submit svg{
+    --size: 50px;
+    width: var(--size);
+    height: var(--size);
+    color:rgb(46, 255, 5);
+}
+
+.submit.active{
+    opacity:100;
+    bottom: 20px;
+}
+
+.form{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 20px;
+    min-width: 255px;
+    box-sizing: content-box;
+}
+
+.title{
+    width: 100%;
+    text-align: center;
+    color:#fff;
+}
+
+.input{
+    background-color: inherit;
+    border: solid 2px #fff;
+    border-radius: 10px;
+    height: 60px;
+    text-align: center;
+    font-size: 23px;
+    width: 100%;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.input:focus-visible{
+    border-radius: 10px;
+}
+
+.categoryPad{
+    display: grid; 
+    grid-template-columns: 1fr 1fr 1fr 1fr; 
+    grid-template-rows: 1fr 1fr 1fr 1fr; 
+    grid-template-areas: 
+    "n n n n"
+    "n n n n"
+    "n n n n"
+    "n n n n"; 
+    gap:5px;
+    margin:10px 0 10px 0;
+}
+
+.categoryItem{
+    --size: 60px;
+    width: var(--size);
+    height: var(--size);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.categoryButton{
+    background: linear-gradient(159.56deg, rgba(255, 255, 255, 0.4) -8.52%, rgba(255, 255, 255, 0.1) 112.08%);
+    box-shadow: 0px 4px 24px -1px rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+    width: 100%;
+    height: 100%;
+}
+
+.categoryButton svg{
+    --sizeSVG: 40px;
+    width: var(--sizeSVG);
+    height: var(--sizeSVG);
+}
+
+.categoryButton.active{
+    box-shadow: 
+        inset -2px -4px 25px -8px rgba(0, 0, 0, 0.75),
+        inset 9px 13px 24px -8px rgba(0, 0, 0, 0.75);
+    transform: translateY(3px);
+}

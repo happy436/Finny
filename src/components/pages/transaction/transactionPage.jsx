@@ -4,14 +4,16 @@ import commonStyle from "../../common/style.module.css"
 import { useParams } from "react-router-dom"
 import { UilPen, UilCancel } from "@iconscout/react-unicons"
 import API from "../../../api"
-import { getIcon } from "../../common/getSVGIcon/getIcon"
 import Loader from "../../common/loader"
 import CardWrapper from "../../common/Card/Card"
+import { useImage } from "../../../hooks/useImage"
 
 function TransactionPage() {
+    const { getIcon } = useImage()
     const [activePad, setActivePad] = useState(false)
     const [data, setData] = useState()
     const { type } = useParams()
+    const [pageType] = useState(type === "income" ? type : "spending")
     useEffect(() => {
         API.data.fetchAll().then(data => {
             setData(
@@ -32,7 +34,6 @@ function TransactionPage() {
         })
     }, [])
     console.log(data)
-    const [typeTrans] = useState(type === "income" ? type : "spending")
     const [num/* , setNum */] = useState("0")
     const numericalButton = [
         {
@@ -128,7 +129,7 @@ function TransactionPage() {
     }
     return (
         <>
-            <main className={`${s.wrapper} ${commonStyle.bg}`}>
+            <section className={`${s.wrapper} ${commonStyle.bg}`}>
                 {activePad ? (
                     <button className={s.back} onClick={() => setActivePad(false)}>
                         {getIcon("UilArrowLeft")}
@@ -138,7 +139,7 @@ function TransactionPage() {
                     <CardWrapper>
                         <form className={s.form} onSubmit={handleSubmit}>
                             <header>
-                                {typeTrans === "income"
+                                {pageType === "income"
                                     ? "New income"
                                     : "New spending"}
                             </header>
@@ -165,8 +166,7 @@ function TransactionPage() {
                             <hr style={{ width: "100%" }} />
                             <div>
                                 <ul
-                                    className={`${s.numericalPad} ${
-                                        !activePad ? s.active : ""
+                                    className={`${s.numericalPad} ${!activePad ? s.active : ""
                                     }`}
                                 >
                                     {numericalButton.map(item => {
@@ -187,8 +187,7 @@ function TransactionPage() {
                                     })}
                                 </ul>
                                 <ul
-                                    className={`${s.categoryPad} ${
-                                        activePad ? s.active : ""
+                                    className={`${s.categoryPad} ${activePad ? s.active : ""
                                     }`}
                                 >
                                     {data.map(item => {
@@ -215,7 +214,7 @@ function TransactionPage() {
                 ) : (
                     <Loader />
                 )}
-            </main>
+            </section>
         </>
     )
 }

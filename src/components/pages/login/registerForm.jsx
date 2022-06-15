@@ -7,7 +7,7 @@ import s from "./login.module.css"
 import CardWrapper from "../../common/Card/Card"
 import { CheckBoxField, TextField } from "../../common/form"
 import PropTypes from "prop-types"
-import { validator } from "../../utils/validator"
+import { validator } from "../../../utils/validator"
 
 const RegisterForm = ({ typeChange }) => {
     const [data, setData] = useState({

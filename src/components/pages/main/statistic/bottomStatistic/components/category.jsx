@@ -1,28 +1,28 @@
-import React, { useContext, useState } from "react"
-import Context from "../../../../../context"
+import React, { useState } from "react"
 import PropTypes from "prop-types"
 import s from "../statistic.module.css"
+import { useImage } from "../../../../../../hooks/useImage"
 import { UilArrowDown } from "@iconscout/react-unicons"
 
 function Category({ icon, color, data, name, type }) {
     const [active, setActive] = useState(false)
-    const { getIcon } = useContext(Context)
+    const { getIcon } = useImage()
     const getSum = data.reduce((prev, curr) => prev.value + curr.value)
     const categoryItem = data.map(item => {
         return (
-            <div key={item.id} className={s.data}>
+            <li key={item.id} className={s.data}>
                 <span>
                     {item.id}
                 </span>
                 <span className={type === "incomeCategories" ? s.green : s.red}>
                     {item.value}$
                 </span>
-            </div>
+            </li>
         )
     })
     return (
         <>
-            <div className={`${s.category}`} onClick={() => { active ? setActive(false) : setActive(true) }}>
+            <li className={`${s.category}`} onClick={() => { active ? setActive(false) : setActive(true) }}>
                 <span className={s.data}>
                     <span className={s.icon}>
                         {getIcon(icon, color)}
@@ -36,10 +36,10 @@ function Category({ icon, color, data, name, type }) {
                         <UilArrowDown className={type === "incomeCategories" ? s.green : s.red} />
                     </span>
                 </span>
-            </div>
-            <div className={`${s.categoryData} ${active ? s.active : ""} `}>
+            </li>
+            <ul className={`${s.categoryData} ${s.list} ${active ? s.active : ""} `}>
                 {categoryItem}
-            </div>
+            </ul>
         </>
     )
 }

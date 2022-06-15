@@ -5,13 +5,13 @@ import RoundStat from "./statistic/roundStat/roundStat.main"
 import Button from "./button"
 import Statistic from "./statistic/bottomStatistic/statistic.main"
 import API from "./../../../api"
-import Context from "../../context"
 import SortMenu from "./menus/sortMenu/sortMenu"
 import Menu from "./menus/menu"
 import Loader from "../../common/loader"
-import { getIcon } from "../../common/getSVGIcon/getIcon"
+import { useImage } from "../../../hooks/useImage"
 
 const Main = () => {
+    const { getIcon } = useImage()
     const [data, setData] = useState()
     const [activeSortMenu, setActiveSortMenu] = useState(false)
     const [activeMenu, setActiveMenu] = useState(false)
@@ -70,54 +70,52 @@ const Main = () => {
     }
 
     return (
-        <Context.Provider value={{ getIcon }}>
-            <main
-                className={`${s.main_layout} ${commonStyle.bg} d-flex flex-column justify-content-center align-items-center min-vh-100`}
+        <main
+            className={`${s.main_layout} ${commonStyle.bg} d-flex flex-column justify-content-center align-items-center min-vh-100`}
+        >
+            {data ? <><section
+                className={
+                    "position-fixed d-flex flex-column justify-content-center align-items-center top-0 w-100"
+                }
             >
-                {data ? <><section
-                    className={
-                        "position-fixed d-flex flex-column justify-content-center align-items-center top-0 w-100"
-                    }
+                <nav className="d-flex justify-content-between p-3 w-100 flex-shrink-1">
+                    <button onClick={() => activeSortMenu ? setActiveSortMenu(false) : setActiveSortMenu(true)}>
+                        {getIcon("UilBars")}
+                    </button>
+                    <button onClick={() => activeMenu ? setActiveMenu(false) : setActiveMenu(true)}>
+                        {getIcon("UilEllipsisV")}
+                    </button>
+                </nav>
+                <time
+                    className={`${s.date} d-flex flex-column justify-content-center align-items-center`}
+                    dateTime={`${year}-${month}-${day}`}
                 >
-                    <nav className="d-flex justify-content-between p-3 w-100 flex-shrink-1">
-                        <button onClick={() => activeSortMenu ? setActiveSortMenu(false) : setActiveSortMenu(true)}>
-                            {getIcon("UilBars")}
-                        </button>
-                        <button onClick={() => activeMenu ? setActiveMenu(false) : setActiveMenu(true)}>
-                            {getIcon("UilEllipsisV")}
-                        </button>
-                    </nav>
-                    <time
-                        className={`${s.date} d-flex flex-column justify-content-center align-items-center`}
-                        dateTime={`${year}-${month}-${day}`}
-                    >
-                        {handleSortData(sortData)}
-                    </time>
-                    <RoundStat data={data} />
-                    <section className="d-flex justify-content-around w-100 ">
-                        <Button type="decrement" />
-                        <Button type="increment" />
-                    </section>
+                    {handleSortData(sortData)}
+                </time>
+                <RoundStat data={data} />
+                <section className="d-flex justify-content-around w-100 ">
+                    <Button type="decrement" />
+                    <Button type="increment" />
                 </section>
-                <Statistic data={
-                    {
-                        incomeCategories: data.incomeCategories,
-                        spendingCategories: data.spendingCategories
-                    }
-                } />
-                <SortMenu
-                    active={activeSortMenu}
-                    typeList={listSortType}
-                    setType={setSortData}
-                    setActive={setActiveSortMenu}
-                />
-                <Menu
-                    active={activeMenu}
-                    setActive={setActiveMenu}
-                    data={data}
-                /></> : <Loader/>}
-            </main>
-        </Context.Provider>
+            </section>
+            <Statistic data={
+                {
+                    incomeCategories: data.incomeCategories,
+                    spendingCategories: data.spendingCategories
+                }
+            } />
+            <SortMenu
+                active={activeSortMenu}
+                typeList={listSortType}
+                setType={setSortData}
+                setActive={setActiveSortMenu}
+            />
+            <Menu
+                active={activeMenu}
+                setActive={setActiveMenu}
+                data={data}
+            /></> : <Loader />}
+        </main>
     )
 }
 

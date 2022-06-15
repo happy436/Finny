@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from "react"
-import { validator } from "../../utils/validator"
+import { validator } from "../../../utils/validator"
 import PropTypes from "prop-types"
 
 const FormComponent = ({

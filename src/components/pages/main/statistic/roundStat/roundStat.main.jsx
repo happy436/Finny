@@ -1,13 +1,13 @@
-import React, { useContext, useEffect, useState } from "react"
+import React, { useEffect, useState } from "react"
 import s from "./roundStat.module.css"
 import CategoryList from "./components/categoryList"
 import Account from "./components/account"
-import Context from "../../../../context"
 import PropTypes from "prop-types"
+import { useImage } from "../../../../../hooks/useImage"
 
 const RoundStat = ({ data }) => {
     const [active, setActive] = useState("")
-    const { getIcon } = useContext(Context)
+    const { getIcon } = useImage()
     function handleActiveClass() {
         active === "" ? setActive(s.active) : setActive("")
     }
