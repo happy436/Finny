@@ -2,7 +2,7 @@ import { getId } from "../../utils/createId"
 
 const users = [
     {
-        _id: "0001",
+        _id: "001",
         email: "asd@a.com",
         chooseCurrency: {
             country: "USA",
