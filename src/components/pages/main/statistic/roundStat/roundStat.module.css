@@ -125,6 +125,7 @@ a svg {
 }
 
 .accountData {
+    font-size:inherit;
 }
 
 .call:nth-child(2) {
