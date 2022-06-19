@@ -1,0 +1,107 @@
+.main {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    width: 100%;
+}
+
+.main_layout nav svg {
+    height: 40px;
+    width: 40px;
+    fill: #fff;
+}
+
+.navigation {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+    width: 100%;
+    flex-shrink: 1;
+}
+
+.main_layout nav button {
+    background-color: transparent;
+}
+
+.date {
+    font-size: 30px;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.day {
+    font-size: 3rem;
+    margin-bottom: 0px;
+}
+.month {
+    font-size: 2rem;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+.summ{
+    bottom:-200px;
+    position: absolute;
+}
+
+@media (min-width: 768px) {
+    .main {
+        display: grid;
+        grid-template-columns: .7fr 1fr;
+        grid-template-rows: 0.2fr 0.2fr 3fr 1.6fr;
+        gap: 0px 0px;
+        grid-template-areas:
+            "nav nav"
+            "date date"
+            "data data"
+            "summ btn";
+        height: 100vh;
+    }
+    .navigation{
+        grid-area: nav;
+    }
+    .date{
+        grid-area:date;
+        flex-direction: row;
+        align-items: flex-end;
+    }
+    .date h3{
+        margin-left:10px;
+    }
+    .buttons{
+        grid-area: btn;
+    }
+    .summ{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        bottom: 0;
+        grid-area:summ;
+    }
+
+    .summ .wrapper{
+        width: 270px;
+        height: 100px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #fff;
+        font-size: 50px;
+        border-radius: 50px;
+    }
+
+    .summ .wrapper p{
+        margin: 0;
+    }
+
+}

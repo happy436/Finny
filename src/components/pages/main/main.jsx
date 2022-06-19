@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react"
-import s from "./layout.module.css"
+import s from "./main.module.css"
 import commonStyle from "../../common/style.module.css"
 import RoundStat from "./statistic/roundStat/roundStat.main"
 import Button from "./button"
@@ -54,14 +54,12 @@ const Main = () => {
             case listSortType.day:
                 return (
                     <>
-                        <h2 className={s.day}>{day < 10 ? `0${day}` : day}</h2>
+                        <h2 className={s.day}>{String(day).padStart(2, 0)}</h2>
                         <h3 className={s.month}>{monthList[month]}</h3>
                     </>
                 )
             case listSortType.week:
-                return (
-                    <h2 className={s.day}>{week < 10 ? `0${week}` : week}</h2>
-                )
+                return <h2 className={s.day}>{String(week).padStart(2, 0)}</h2>
             case listSortType.month:
                 return <h3 className={s.month}>{monthList[month]}</h3>
             case listSortType.year:
@@ -73,48 +71,67 @@ const Main = () => {
         <main
             className={`${s.main_layout} ${commonStyle.bg} d-flex flex-column justify-content-center align-items-center min-vh-100`}
         >
-            {data ? <><section
-                className={
-                    "position-fixed d-flex flex-column justify-content-center align-items-center top-0 w-100"
-                }
-            >
-                <nav className="d-flex justify-content-between p-3 w-100 flex-shrink-1">
-                    <button onClick={() => activeSortMenu ? setActiveSortMenu(false) : setActiveSortMenu(true)}>
-                        {getIcon("UilBars")}
-                    </button>
-                    <button onClick={() => activeMenu ? setActiveMenu(false) : setActiveMenu(true)}>
-                        {getIcon("UilEllipsisV")}
-                    </button>
-                </nav>
-                <time
-                    className={`${s.date} d-flex flex-column justify-content-center align-items-center`}
-                    dateTime={`${year}-${month}-${day}`}
-                >
-                    {handleSortData(sortData)}
-                </time>
-                <RoundStat data={data} />
-                <section className="d-flex justify-content-around w-100 ">
-                    <Button type="decrement" />
-                    <Button type="increment" />
-                </section>
-            </section>
-            <Statistic data={
-                {
-                    incomeCategories: data.incomeCategories,
-                    spendingCategories: data.spendingCategories
-                }
-            } />
-            <SortMenu
-                active={activeSortMenu}
-                typeList={listSortType}
-                setType={setSortData}
-                setActive={setActiveSortMenu}
-            />
-            <Menu
-                active={activeMenu}
-                setActive={setActiveMenu}
-                data={data}
-            /></> : <Loader />}
+            {data ? (
+                <>
+                    <section className={s.main}>
+                        <nav className={s.navigation}>
+                            <button
+                                onClick={() =>
+                                    activeSortMenu
+                                        ? setActiveSortMenu(false)
+                                        : setActiveSortMenu(true)
+                                }
+                            >
+                                {getIcon("UilBars")}
+                            </button>
+                            <button
+                                onClick={() =>
+                                    activeMenu
+                                        ? setActiveMenu(false)
+                                        : setActiveMenu(true)
+                                }
+                            >
+                                {getIcon("UilEllipsisV")}
+                            </button>
+                        </nav>
+                        <time
+                            className={s.date}
+                            dateTime={`${year}-${month}-${day}`}
+                        >
+                            {handleSortData(sortData)}
+                        </time>
+                        <RoundStat data={data} />
+                        <section className={s.buttons}>
+                            <Button type="decrement" />
+                            <Button type="increment" />
+                        </section>
+                        <section className={s.summ}>
+                            <div className={s.wrapper}>
+                                <p>9999.00$</p>
+                            </div>
+                        </section>
+                    </section>
+                    <Statistic
+                        data={{
+                            incomeCategories: data.incomeCategories,
+                            spendingCategories: data.spendingCategories
+                        }}
+                    />
+                    <SortMenu
+                        active={activeSortMenu}
+                        typeList={listSortType}
+                        setType={setSortData}
+                        setActive={setActiveSortMenu}
+                    />
+                    <Menu
+                        active={activeMenu}
+                        setActive={setActiveMenu}
+                        data={data}
+                    />
+                </>
+            ) : (
+                <Loader />
+            )}
         </main>
     )
 }

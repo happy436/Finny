@@ -4,7 +4,7 @@ import PropTypes from "prop-types"
 import Category from "./components/category"
 
 const Statistic = ({ data }) => {
-    const render = (data) => {
+    const render = data => {
         return Object.values(data).map((type, index) => {
             return type.map(item => {
                 return (
@@ -22,7 +22,7 @@ const Statistic = ({ data }) => {
     }
     const summ = 9999
     const currency = "$"
-    const renderSumm = (number) => {
+    const renderSumm = number => {
         if (number < 10000 && number > -10000) {
             return number.toFixed(2) + currency
         } else {
@@ -31,18 +31,20 @@ const Statistic = ({ data }) => {
     }
 
     return (
-        <section className={`${s.statistic} flex-column d-flex`}>
-            <span className={s.horizBlock}>
-                <h2 className={`${s.summ} ${summ >= 0 ? s.green : s.red}`}>{renderSumm(summ)}</h2>
-                <hr className={s.line} />
-                <hr className={s.line} />
-                <hr className={s.line} />
-            </span>
-            <span>
-                <ul className={s.list}>
-                    {render(data)}
-                </ul>
-            </span>
+        <section className={s.statistic}>
+            <div className={s.wrapper}>
+                <span className={s.horizBlock}>
+                    <h2 className={`${s.summ} ${summ >= 0 ? s.green : s.red}`}>
+                        {renderSumm(summ)}
+                    </h2>
+                    <hr className={s.line} />
+                    <hr className={s.line} />
+                    <hr className={s.line} />
+                </span>
+                <span>
+                    <ul className={s.list}>{render(data)}</ul>
+                </span>
+            </div>
         </section>
     )
 }

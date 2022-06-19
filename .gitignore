@@ -12,6 +12,7 @@
 /build
 
 # misc
+config.json
 *.test.jsx
 *.test.js
 .DS_Store

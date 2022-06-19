@@ -6,10 +6,10 @@ import PropTypes from "prop-types"
 import { useImage } from "../../../../../hooks/useImage"
 
 const RoundStat = ({ data }) => {
-    const [active, setActive] = useState("")
+    const [active, setActive] = useState(false)
     const { getIcon } = useImage()
     function handleActiveClass() {
-        active === "" ? setActive(s.active) : setActive("")
+        setActive(prevState => !prevState)
     }
     const [allIncome, setAllIncome] = useState(0)
     const [allSpending, setAllSpending] = useState(0)
@@ -28,7 +28,7 @@ const RoundStat = ({ data }) => {
     }, [data])
 
     return (
-        <section className={`${s.menu} ${active} mb-1`}>
+        <section className={`${s.menu} ${active ? s.active : ""} mb-1`}>
             <Account
                 onActiveClass={handleActiveClass}
                 allIncome={allIncome}
@@ -37,8 +37,8 @@ const RoundStat = ({ data }) => {
             />
             {Object.keys(data).length !== 0 ? (
                 <>
-                    <span className={`${active === "" ? s.call : ""}`}></span>
-                    <span className={`${active === "" ? s.call : ""}`}></span>
+                    <span className={`${!active ? s.call : ""}`}></span>
+                    <span className={`${!active ? s.call : ""}`}></span>
                 </>
             ) : null}
             <ul className={s.nav}>

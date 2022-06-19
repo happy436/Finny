@@ -15,25 +15,30 @@ const Category = ({ data, getIcon, count, index, active, allSpending }) => {
     const liStyle = {
         "--i": index
     }
-    const anchorStyle = {
+    /* const anchorStyle = {
         transform: `rotate(calc(360deg / -${count} * var(--i)))`
-    }
+    } */
     return (
-        <li
-            className={s.item}
-            style={data ? liStyle : ""}>
+        <li className={s.item} style={data ? liStyle : ""}>
+            <div className={s.progressBar}>
+                <div
+                    style={{
+                        minHeight: `calc(2.3px*${percent}`,
+                        backgroundColor: data.color
+                    }}
+                >
+                </div>
+            </div>
             <NavLink
                 to="/bubbly/profile/"
-                className={(isActive) => isActive ? `${s.active}` : ""}
-                style={anchorStyle}
+                /* className={isActive => (isActive ? `${s.active}` : "")} */
+                className={s.active}
+                /* style={anchorStyle} */
             >
-                <ProgressRing
-                    data={data}
-                    percent={percent}
-                    active={active}
-                />
+                <ProgressRing data={data} percent={percent} active={active} />
                 {data ? getIcon(icon, color) : ""}
             </NavLink>
+            <p className={s.text}>{percent}%</p>
         </li>
     )
 }
@@ -43,7 +48,7 @@ Category.propTypes = {
     getIcon: PropTypes.func,
     count: PropTypes.number,
     index: PropTypes.number,
-    active: PropTypes.string,
+    active: PropTypes.bool,
     allSpending: PropTypes.number
 }
 

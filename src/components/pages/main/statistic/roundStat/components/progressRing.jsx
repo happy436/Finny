@@ -14,13 +14,8 @@ function ProgressRing({ percent, data, active }) {
     const circumference = 2 * Math.PI * radius
     circleStyle.strokeDasharray = `${circumference} ${circumference}`
     circleStyle.strokeDashoffset = circumference
-    /* function setProgress(percent) {
-        const offset = circumference - percent / 100 * circumference
-        circleStyle.strokeDashoffset = active === "" ? circumference : offset
-    }
-    setProgress(percent) */
     const offset = circumference - percent / 100 * circumference
-    circleStyle.strokeDashoffset = active === "" ? circumference : offset
+    circleStyle.strokeDashoffset = !active ? circumference : offset
 
     return (
         <svg
@@ -37,7 +32,7 @@ function ProgressRing({ percent, data, active }) {
 ProgressRing.propTypes = {
     data: PropTypes.object,
     percent: PropTypes.number.isRequired,
-    active: PropTypes.string
+    active: PropTypes.bool
 }
 
 export default ProgressRing

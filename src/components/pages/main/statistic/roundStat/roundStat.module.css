@@ -1,7 +1,6 @@
-
-
 ul {
     top: 20px;
+    margin: 0;
 }
 .menu {
     position: relative;
@@ -19,13 +18,17 @@ ul {
     transition: 0.5s;
     transition-delay: calc(0.1s * var(--i));
     transform: rotate(0deg) translateX(100px);
-    left:0;
+    left: 0;
 }
 
 .menu.active li {
     left: 0;
     top: 120px;
     transform: rotate(calc(360deg / 8 * var(--i)));
+}
+
+.menu.active li a.active{
+    transform: rotate(calc(-45deg * var(--i)))
 }
 
 .menu li a {
@@ -52,7 +55,7 @@ a svg {
 }
 
 .toggle {
-    --width:140px;
+    --width: 140px;
     position: absolute;
     width: var(--width);
     height: var(--width);
@@ -68,29 +71,30 @@ a svg {
     /* overflow: hidden; */
     opacity: 1;
     font-size: 20px;
-    z-index:2;
+    z-index: 2;
+    box-shadow: inset 3px 6px 4px rgba(215, 121, 231, 0.25), inset -5px -2px 4px rgba(252, 255, 130, 0.25);
 }
 
-.progress_ring{
+.progress_ring {
     position: absolute;
-    top:0;
-    left:0;
-    z-index:10;
+    top: 0;
+    left: 0;
+    z-index: 10;
     width: 60px;
     height: 60px;
 }
 
-.progress_ring .circle{
+.progress_ring .circle {
     position: absolute;
-    top:0;
-    left:0;
+    top: 0;
+    left: 0;
     stroke-width: 4;
-    fill:transparent;
+    fill: transparent;
     transform: translateX(30px) translateY(30px) rotate(270deg);
     transform-origin: top left;
 }
 
-.percent{
+.percent {
     display: flex;
     justify-content: center;
     margin-top: 0.1rem;
@@ -98,29 +102,120 @@ a svg {
 }
 
 @keyframes calling {
-    0%{
+    0% {
         transform: scale(1);
-        opacity: 0.8
+        opacity: 0.8;
     }
-    100%{
+    100% {
         transform: scale(2);
         opacity: 0;
     }
 }
 
-.call{
-    --a:100px;
-    content:"";
+.call {
+    --a: 100px;
+    content: "";
     width: var(--a);
     height: var(--a);
     border-radius: 50%;
     position: absolute;
     animation: calling 2s ease infinite;
     background: #fff;
-    z-index:-2;
+    z-index: -2;
 }
 
-.call:nth-child(2){
+.accountData {
+}
+
+.call:nth-child(2) {
     animation-delay: 0.5s;
 }
 
+.text{
+    display: none;
+}
+
+.progressBar{
+    display: none;
+}
+
+@media (min-width: 768px) {
+    .progress_ring{
+        display: none;
+    }
+    .menu.active li {
+        top: 0;
+        transform: none;
+    }
+    .menu.active li a.active{
+        transform: none;
+    }
+    .progressBar{
+        min-height: 85%;
+        width: 100%;
+        display: flex;
+        align-items: flex-end;
+        transform: translateY(20px);
+    }
+    li p{
+        color:rgb(255, 0, 0);
+    }
+    .text{
+        display: flex;
+        justify-content: center;
+    }
+    .progressBar div{
+        border-radius: 20px 20px 0 0;
+        padding-top: 5px;
+        width: 100%;
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+    }
+    .menu {
+        width: 100%;
+        grid-area: data;
+        display:grid;
+        grid-template-columns: .7fr 1fr;
+        grid-template-rows: 1fr;
+        gap: 0px 0px;
+        grid-template-areas:"data stat";
+        justify-items: center;
+    }
+    .call{
+        display:none;
+    }
+
+    .toggle {
+        width: 270px;
+        height: 100%;
+        border-radius: 50px;
+        justify-content: space-around;
+        grid-area:data;
+    }
+    .accountData {
+        font-size: 30px;
+    }
+    .menu ul {
+        grid-area: stat;
+        display: flex;
+        height: 100%;
+        align-items: flex-end;
+        padding: 0;
+        margin: 0;
+        gap:5px;
+        bottom: 0;
+    }
+    .menu li {
+        position: relative;
+        transform-origin: 0px;
+        transform: none;
+        height: 100%;
+    }
+    .menu li a{
+        --size: 45px;
+        height: var(--size);
+        width: var(--size);
+        transform: none;
+    }
+}
