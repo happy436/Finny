@@ -5,7 +5,7 @@ import Account from "./components/account"
 import PropTypes from "prop-types"
 import { useImage } from "../../../../../hooks/useImage"
 
-const RoundStat = ({ data }) => {
+const RoundStat = ({ data, onChange }) => {
     const [active, setActive] = useState(false)
     const { getIcon } = useImage()
     function handleActiveClass() {
@@ -13,6 +13,7 @@ const RoundStat = ({ data }) => {
     }
     const [allIncome, setAllIncome] = useState(0)
     const [allSpending, setAllSpending] = useState(0)
+    const [allPrev] = useState(0)
     function onAllTransactions(data) {
         let result = 0
         data.forEach(item => {
@@ -26,6 +27,9 @@ const RoundStat = ({ data }) => {
         setAllSpending(onAllTransactions(data.spendingCategories))
         setAllIncome(onAllTransactions(data.incomeCategories))
     }, [data])
+    useEffect(() => {
+        onChange(allIncome, allSpending, allPrev)
+    })
 
     return (
         <section className={`${s.menu} ${active ? s.active : ""} mb-1`}>
@@ -58,7 +62,8 @@ const RoundStat = ({ data }) => {
 }
 
 RoundStat.propTypes = {
-    data: PropTypes.object
+    data: PropTypes.object,
+    onChange: PropTypes.func
 }
 
 export default RoundStat

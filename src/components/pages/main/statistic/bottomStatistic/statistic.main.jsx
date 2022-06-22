@@ -2,8 +2,9 @@ import React from "react"
 import s from "./statistic.module.css"
 import PropTypes from "prop-types"
 import Category from "./components/category"
+import { showCoins } from "../../../../../utils/showCoins"
 
-const Statistic = ({ data }) => {
+const Statistic = ({ data, reminder }) => {
     const render = data => {
         return Object.values(data).map((type, index) => {
             return type.map(item => {
@@ -20,22 +21,13 @@ const Statistic = ({ data }) => {
             })
         })
     }
-    const summ = 9999
-    const currency = "$"
-    const renderSumm = number => {
-        if (number < 10000 && number > -10000) {
-            return number.toFixed(2) + currency
-        } else {
-            return number + currency
-        }
-    }
 
     return (
         <section className={s.statistic}>
             <div className={s.wrapper}>
                 <span className={s.horizBlock}>
-                    <h2 className={`${s.summ} ${summ >= 0 ? s.green : s.red}`}>
-                        {renderSumm(summ)}
+                    <h2 className={`${s.summ} ${reminder >= 0 ? s.green : s.red}`}>
+                        {showCoins(reminder)}$
                     </h2>
                     <hr className={s.line} />
                     <hr className={s.line} />
@@ -50,7 +42,8 @@ const Statistic = ({ data }) => {
 }
 
 Statistic.propTypes = {
-    data: PropTypes.object
+    data: PropTypes.object,
+    reminder: PropTypes.number
 }
 
 export default Statistic

@@ -51,6 +51,7 @@
     justify-content: space-between;
     margin: 10px 30px 20px 30px;
     align-items: center;
+    cursor: pointer;
 }
 
 .statistic .category .data {
@@ -120,5 +121,11 @@
 @media (min-width: 768px) {
     .statistic {
         bottom: -100%;
+    }
+    .statistic .category {
+        display: flex;
+        justify-content: space-between;
+        margin: 10px 60px 20px 60px;
+        align-items: center;
     }
 }

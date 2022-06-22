@@ -9,10 +9,12 @@ import SortMenu from "./menus/sortMenu/sortMenu"
 import Menu from "./menus/menu"
 import Loader from "../../common/loader"
 import { useImage } from "../../../hooks/useImage"
+import { showCoins } from "./../../../utils/showCoins"
 
 const Main = () => {
     const { getIcon } = useImage()
     const [data, setData] = useState()
+    const [reminder, setReminder] = useState(0)
     const [activeSortMenu, setActiveSortMenu] = useState(false)
     const [activeMenu, setActiveMenu] = useState(false)
     useEffect(() => {
@@ -67,6 +69,11 @@ const Main = () => {
         }
     }
 
+    const handleChange = (income, spend, prev) => {
+        const value = income - spend + prev
+        setReminder(value)
+    }
+
     return (
         <main
             className={`${s.main_layout} ${commonStyle.bg} d-flex flex-column justify-content-center align-items-center min-vh-100`}
@@ -100,14 +107,20 @@ const Main = () => {
                         >
                             {handleSortData(sortData)}
                         </time>
-                        <RoundStat data={data} />
+                        <RoundStat data={data} onChange={handleChange} />
                         <section className={s.buttons}>
                             <Button type="decrement" />
                             <Button type="increment" />
                         </section>
                         <section className={s.summ}>
                             <div className={s.wrapper}>
-                                <p>9999.00$</p>
+                                <h2
+                                    className={`${s.summ} ${
+                                        reminder >= 0 ? s.green : s.red
+                                    }`}
+                                >
+                                    {showCoins(reminder)}$
+                                </h2>
                             </div>
                         </section>
                     </section>
@@ -116,6 +129,7 @@ const Main = () => {
                             incomeCategories: data.incomeCategories,
                             spendingCategories: data.spendingCategories
                         }}
+                        reminder={reminder}
                     />
                     <SortMenu
                         active={activeSortMenu}

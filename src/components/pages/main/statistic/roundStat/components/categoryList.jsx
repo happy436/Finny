@@ -4,7 +4,20 @@ import PropTypes from "prop-types"
 
 function CategoryList({ active, getIcon, data, allSpending }) {
     const maxIndex = 7
-    const list = data.map((item, index) =>
+    const filteredData = data.sort((a, b) => {
+        const aAllTransactions = a.transaction.reduce((prev, curr) => {
+            let result = 0
+            result = prev.value + curr.value
+            return result
+        })
+        const bAllTransactions = b.transaction.reduce((prev, curr) => {
+            let result = 0
+            result = prev.value + curr.value
+            return result
+        })
+        return bAllTransactions - aAllTransactions
+    })
+    const list = filteredData.map((item, index) =>
         index <= maxIndex ? (
             <Category
                 key={index} // заменить

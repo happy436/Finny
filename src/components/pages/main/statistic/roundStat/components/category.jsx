@@ -4,7 +4,7 @@ import s from "../roundStat.module.css"
 import PropTypes from "prop-types"
 import ProgressRing from "./progressRing"
 
-const Category = ({ data, getIcon, count, index, active, allSpending }) => {
+const Category = ({ data, getIcon, index, active, allSpending }) => {
     const { transaction, icon, color } = data
     const value = transaction.reduce((prev, curr) => {
         let result = 0
@@ -15,9 +15,6 @@ const Category = ({ data, getIcon, count, index, active, allSpending }) => {
     const liStyle = {
         "--i": index
     }
-    /* const anchorStyle = {
-        transform: `rotate(calc(360deg / -${count} * var(--i)))`
-    } */
     return (
         <li className={s.item} style={data ? liStyle : ""}>
             <div className={s.progressBar}>
@@ -31,9 +28,7 @@ const Category = ({ data, getIcon, count, index, active, allSpending }) => {
             </div>
             <NavLink
                 to="/bubbly/profile/"
-                /* className={isActive => (isActive ? `${s.active}` : "")} */
                 className={s.active}
-                /* style={anchorStyle} */
             >
                 <ProgressRing data={data} percent={percent} active={active} />
                 {data ? getIcon(icon, color) : ""}

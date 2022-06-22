@@ -14,6 +14,14 @@
     fill: #fff;
 }
 
+.green {
+    color: #2ca10f;
+}
+
+.red {
+    color: #f8000c;
+}
+
 .navigation {
     display: flex;
     justify-content: space-between;
