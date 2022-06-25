@@ -5,6 +5,8 @@ import Login from "./components/pages/login/login"
 import Main from "./components/pages/main/main"
 import TransactionPage from "./components/pages/transaction"
 import ImageProvider from "./hooks/useImage"
+import { ToastContainer } from "react-toastify"
+import "react-toastify/dist/ReactToastify.css"
 
 function App() {
     return (
@@ -24,6 +26,7 @@ function App() {
                 </ImageProvider>
                 <Redirect to="/" />
             </Switch>
+            <ToastContainer />
         </>
     )
 }

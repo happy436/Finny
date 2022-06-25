@@ -6,9 +6,8 @@ const incomeTransactions = [
         categories: [
             {
                 _id: getId(),
-                name: "Salary",
-                icon: "UilCreditCard",
-                color: "#147BC5",
+                name: "Card",
+                categoryId: "67rdca3eeb7f6fgeed471818",
                 transactions: [
                     {
                         _id: getId(),
@@ -24,9 +23,8 @@ const incomeTransactions = [
             },
             {
                 _id: getId(),
-                name: "Deposit",
-                icon: "UilMoneyWithdraw",
-                color: "#147BC5",
+                name: "Cash",
+                categoryId: "67rdca3eeb7f6fgeed471819",
                 transactions: [
                     {
                         _id: getId(),
@@ -44,12 +42,11 @@ const incomeTransactions = [
     },
     {
         _userId: "002",
-        transactions: [
+        categories: [
             {
                 _id: getId(),
-                name: "Salary",
-                icon: "UilCreditCard",
-                color: "#147BC5",
+                name: "Card",
+                categoryId: "67rdca3eeb7f6fgeed471818",
                 transactions: [
                     {
                         _id: getId(),
@@ -65,9 +62,8 @@ const incomeTransactions = [
             },
             {
                 _id: getId(),
-                name: "Deposit",
-                icon: "UilMoneyWithdraw",
-                color: "#147BC5",
+                name: "Cash",
+                categoryId: "67rdca3eeb7f6fgeed471819",
                 transactions: [
                     {
                         _id: getId(),

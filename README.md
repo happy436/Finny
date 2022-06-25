@@ -1,7 +1,7 @@
 # Finny
 
 ---
-![50%](https://progress-bar.dev/50)
+![35%](https://progress-bar.dev/35)
 
 [![Build Status](https://app.travis-ci.com/happy436/Finny.svg?branch=main)](https://app.travis-ci.com/happy436/Finny)
 
@@ -12,10 +12,11 @@
 
 [x] ~~Idea~~
 [x] ~~[Design](https://www.figma.com/file/2Q2l4hS8YAuVbrewjkXODJ/Finance-App?node-id=0%3A1)~~
-- [x] Mobile
-- [ ] Tablet
-- [ ] Laptop
+- [x] ~~Mobile~~
+- [x] ~~Tablet~~
+- [x] ~~Laptop~~
 [x] ~~create-react-app~~
+[ ] create Firebase database
 [ ] Sorting or filtering
 [ ] Implement all components
 [ ] Implement routing
