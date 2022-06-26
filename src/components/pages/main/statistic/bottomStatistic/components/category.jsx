@@ -4,16 +4,18 @@ import s from "../statistic.module.css"
 import { useImage } from "../../../../../../hooks/useImage"
 import { UilArrowDown } from "@iconscout/react-unicons"
 
-function Category({ icon, color, data, name, type }) {
+function Category({ categoryIcon, categoryColor, data, name, type }) {
     const [active, setActive] = useState(false)
     const { getIcon } = useImage()
     const getSum = data.reduce((prev, curr) => prev.value + curr.value)
     const categoryItem = data.map(item => {
+        const time = new Date(Number(item.created_at))
+        const timeFormat = `${String(time.getDate()).padStart(2, 0)}.${String(
+            time.getMonth() + 1
+        ).padStart(2, 0)}.${String(time.getFullYear())}`
         return (
-            <li key={item.id} className={s.data}>
-                <span>
-                    {item.id}
-                </span>
+            <li key={item._id} className={s.data}>
+                <span>{timeFormat}</span>
                 <span className={type === "incomeCategories" ? s.green : s.red}>
                     {item.value}$
                 </span>
@@ -22,22 +24,45 @@ function Category({ icon, color, data, name, type }) {
     })
     return (
         <>
-            <li className={`${s.category}`} onClick={() => { active ? setActive(false) : setActive(true) }}>
+            <li
+                className={`${s.category}`}
+                onClick={() => {
+                    active ? setActive(false) : setActive(true)
+                }}
+            >
                 <span className={s.data}>
                     <span className={s.icon}>
-                        {getIcon(icon, color)}
+                        {getIcon(categoryIcon, categoryColor)}
                     </span>
-                    <h4 style={{ color: color }}>{name}</h4>
+                    <h4 style={{ color: categoryColor }}>{name}</h4>
                     <span className={s.countTransaction}>{data.length}</span>
                 </span>
                 <span className={s.data}>
-                    <b className={`${s.number} ${type === "incomeCategories" ? s.green : s.red}`}>{getSum}$</b>
-                    <span className={`${s.arrow} ${active ? s.activeCategory : ""}`}>
-                        <UilArrowDown className={type === "incomeCategories" ? s.green : s.red} />
+                    <b
+                        className={`${s.number} ${
+                            type === "incomeCategories" ? s.green : s.red
+                        }`}
+                    >
+                        {getSum}$
+                    </b>
+                    <span
+                        className={`${s.arrow} ${
+                            active ? s.activeCategory : ""
+                        }`}
+                    >
+                        <UilArrowDown
+                            className={
+                                type === "incomeCategories" ? s.green : s.red
+                            }
+                        />
                     </span>
                 </span>
             </li>
-            <ul className={`${s.categoryData} ${s.list} ${active ? s.active : ""} `}>
+            <ul
+                className={`${s.categoryData} ${s.list} ${
+                    active ? s.active : ""
+                } `}
+            >
                 {categoryItem}
             </ul>
         </>
@@ -45,8 +70,8 @@ function Category({ icon, color, data, name, type }) {
 }
 
 Category.propTypes = {
-    icon: PropTypes.string,
-    color: PropTypes.string,
+    categoryIcon: PropTypes.string,
+    categoryColor: PropTypes.string,
     name: PropTypes.string,
     data: PropTypes.array,
     type: PropTypes.string

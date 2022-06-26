@@ -4,13 +4,16 @@ import s from "../menu.module.css"
 import { UilPlus, UilExchange } from "@iconscout/react-unicons"
 import { useImage } from "../../../../../../hooks/useImage"
 import { NavLink } from "react-router-dom"
+import { useCategories } from "./../../../../../../hooks/useCategories"
 
 function OptionMenu({ type, data }) {
     const { getIcon } = useImage()
-    const setCurrency = (currenctSymbol) => {
+    const { getCategory } = useCategories()
+    /* const setCurrency = (currenctSymbol) => {
         console.log(currenctSymbol)
-    }
-    const render = (type) => {
+    } */
+    getCategory()
+    const render = type => {
         switch (type) {
             case "categories":
                 return (
@@ -23,9 +26,12 @@ function OptionMenu({ type, data }) {
                         </span>
                         <ul>
                             {data.spendingCategories.map(item => (
-                                <li key={item.id} className={s.optionMenuItem}>
-                                    {getIcon(item.icon)}
-                                    <p>{item.name[0].toUpperCase() + item.name.slice(1)}</p>
+                                <li key={item._id} className={s.optionMenuItem}>
+                                    {getIcon(getCategory(item.categoryId, 1).icon)}
+                                    <p className={s.optionMenuItemText}>
+                                        {item.name[0].toUpperCase() +
+                                            item.name.slice(1)}
+                                    </p>
                                 </li>
                             ))}
                         </ul>
@@ -37,9 +43,12 @@ function OptionMenu({ type, data }) {
                         </span>
                         <ul>
                             {data.incomeCategories.map(item => (
-                                <li key={item.id} className={s.optionMenuItem}>
-                                    {getIcon(item.icon)}
-                                    <p>{item.name[0].toUpperCase() + item.name.slice(1)}</p>
+                                <li key={item._id} className={s.optionMenuItem}>
+                                    {getIcon(getCategory(item.categoryId, 0).icon)}
+                                    <p className={s.optionMenuItemText}>
+                                        {item.name[0].toUpperCase() +
+                                            item.name.slice(1)}
+                                    </p>
                                 </li>
                             ))}
                         </ul>
@@ -56,16 +65,19 @@ function OptionMenu({ type, data }) {
                         </span>
                         <ul>
                             {data.incomeCategories.map(item => (
-                                <li key={item.id} className={`${s.optionMenuItem} ${s.accountIcon}`}>
-                                    {getIcon(item.icon, "#FFF")}
+                                <li
+                                    key={item._id}
+                                    className={`${s.optionMenuItem} ${s.accountIcon}`}
+                                >
+                                    {getIcon(getCategory(item.categoryId, 0).icon, "#FFF")}
                                     <span className={s.accountItemData}>
-                                        <p>{item.name[0].toUpperCase() + item.name.slice(1)}</p>
-                                        <p>
+                                        <p className={s.optionMenuItemText}>{item.name[0].toUpperCase() + item.name.slice(1)}</p>
+                                        <p className={s.optionMenuItemText}>
                                             {`${item
-                                                .transaction
+                                                .transactions
                                                 .reduce((p, c) => p.value + c.value)
-                                                .toFixed(2)} 
-                                            ${data.currency.chooseCurrency}`}</p>
+                                                .toFixed(2)}
+                                            ${data.currency.symbol}`}</p>
                                     </span>
                                 </li>
                             ))}
@@ -84,12 +96,12 @@ function OptionMenu({ type, data }) {
                         <span className={s.optionMenuHeader}>
                             <b>Choose currency</b>
                         </span>
-                        <ul>
+                        {/* <ul>
                             {Object.keys(data.currencyList).map(item => {
                                 return (
                                     <li
                                         key={item}
-                                        className={`${s.currencyItem}`} /* ${s.active} */
+                                        className={`${s.currencyItem}`}
                                         onClick={() => setCurrency(data.currencyList[item])}
                                     >
                                         <p>{item}</p>
@@ -97,7 +109,7 @@ function OptionMenu({ type, data }) {
                                     </li>
                                 )
                             })}
-                        </ul>
+                        </ul> */}
                     </>
                 )
             case "settings":
@@ -106,11 +118,12 @@ function OptionMenu({ type, data }) {
                         <ul className={s.settingsList}>
                             {Object.keys(data).map(item => {
                                 return (
-                                    <li
-                                        key={item}
-                                        className={s.settingsItem}
-                                    >
-                                        <p>{item[0].toUpperCase() + item.slice(1) + `: `}</p>
+                                    <li key={item} className={s.settingsItem}>
+                                        <p>
+                                            {item[0].toUpperCase() +
+                                                item.slice(1) +
+                                                `: `}
+                                        </p>
                                         <p>{data[item]}</p>
                                     </li>
                                 )
@@ -120,11 +133,7 @@ function OptionMenu({ type, data }) {
                 )
         }
     }
-    return (
-        <>
-            {render(type)}
-        </>
-    )
+    return <>{render(type)}</>
 }
 
 OptionMenu.propTypes = {

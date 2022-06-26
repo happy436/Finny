@@ -25,15 +25,15 @@ function Menu({ active, setActive, data }) {
             img: categories,
             name: "categories",
             data: {
-                incomeCategories: data.incomeCategories,
-                spendingCategories: data.spendingCategories
+                incomeCategories: data.income,
+                spendingCategories: data.spending
             }
         },
         {
             img: accounts,
             name: "accounts",
             data: {
-                incomeCategories: data.incomeCategories,
+                incomeCategories: data.income,
                 currency: data.currency
             }
         },

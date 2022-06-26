@@ -3,11 +3,9 @@ import s from "./roundStat.module.css"
 import CategoryList from "./components/categoryList"
 import Account from "./components/account"
 import PropTypes from "prop-types"
-import { useImage } from "../../../../../hooks/useImage"
 
 const RoundStat = ({ data, onChange }) => {
     const [active, setActive] = useState(false)
-    const { getIcon } = useImage()
     function handleActiveClass() {
         setActive(prevState => !prevState)
     }
@@ -17,15 +15,15 @@ const RoundStat = ({ data, onChange }) => {
     function onAllTransactions(data) {
         let result = 0
         data.forEach(item => {
-            item.transaction.forEach(item => {
+            item.transactions.forEach(item => {
                 result += item.value
             })
         })
         return result
     }
     useEffect(() => {
-        setAllSpending(onAllTransactions(data.spendingCategories))
-        setAllIncome(onAllTransactions(data.incomeCategories))
+        setAllSpending(onAllTransactions(data.spending))
+        setAllIncome(onAllTransactions(data.income))
     }, [data])
     useEffect(() => {
         onChange(allIncome, allSpending, allPrev)
@@ -37,7 +35,7 @@ const RoundStat = ({ data, onChange }) => {
                 onActiveClass={handleActiveClass}
                 allIncome={allIncome}
                 allSpending={allSpending}
-                currency={data.currency.chooseCurrency}
+                currency={data.currency.symbol}
             />
             {Object.keys(data).length !== 0 ? (
                 <>
@@ -50,8 +48,7 @@ const RoundStat = ({ data, onChange }) => {
                     <>
                         <CategoryList
                             active={active}
-                            data={data.spendingCategories}
-                            getIcon={getIcon}
+                            data={data.spending}
                             allSpending={allSpending}
                         />
                     </>

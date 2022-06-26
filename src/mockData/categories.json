@@ -1,0 +1,142 @@
+[
+    {
+        "type": "income",
+        "data": {
+            "67rdca3eeb7f6fgeed471818": {
+                "_id": "67rdca3eeb7f6fgeed471818",
+                "icon": "UilCreditCard",
+                "color": "#147BC5"
+            },
+            "67rdca3eeb7f6fgeed471819": {
+                "_id": "67rdca3eeb7f6fgeed471819",
+                "icon": "UilMoneyWithdraw",
+                "color": "#20B635"
+            }
+        }
+    },
+    {   
+        "type" : "spending",
+        "data": {
+            "67rdca3eeb7f6fgeed472001": {
+                "_id": "67rdca3eeb7f6fgeed472001",
+                "icon": "UilDumbbell",
+                "color": "#147BC5"
+            },
+            "67rdca3eeb7f6fgeed472002": {
+                "_id": "67rdca3eeb7f6fgeed472002",
+                "icon": "UilPizzaSlice",
+                "color": "#F29C4C"
+            },
+            "67rdca3eeb7f6fgeed472003": {
+                "_id": "67rdca3eeb7f6fgeed472003",
+                "icon": "UilEstate",
+                "color": "#1FCEE5"
+            },
+            "67rdca3eeb7f6fgeed472004": {
+                "_id": "67rdca3eeb7f6fgeed472004",
+                "icon": "UilMedicalSquareFull",
+                "color": "#F24C4C"
+            },
+            "67rdca3eeb7f6fgeed472005": {
+                "_id": "67rdca3eeb7f6fgeed472005",
+                "icon": "UilBusSchool",
+                "color": "#FD38A2"
+            },
+            "67rdca3eeb7f6fgeed472006": {
+                "_id": "67rdca3eeb7f6fgeed472006",
+                "icon": "UilShoppingBag",
+                "color": "#5DBF2F"
+            },
+            "67rdca3eeb7f6fgeed472007": {
+                "_id": "67rdca3eeb7f6fgeed472007",
+                "icon": "UilPricetagAlt",
+                "color": "#D06400"
+            },
+            "67rdca3eeb7f6fgeed472008": {
+                "_id": "67rdca3eeb7f6fgeed472008",
+                "icon": "UilDesktop",
+                "color": "#1D00D0"
+            },
+            "67rdca3eeb7f6fgeed472009": {
+                "_id": "67rdca3eeb7f6fgeed472009",
+                "icon": "UilBath",
+                "color": "#2a7fff"
+            },
+            "67rdca3eeb7f6fgeed472010": {
+                "_id": "67rdca3eeb7f6fgeed472010",
+                "icon": "UilBabyCarriage",
+                "color": "#e92ab0"
+            },
+            "67rdca3eeb7f6fgeed472011": {
+                "_id": "67rdca3eeb7f6fgeed472011",
+                "icon": "UilCar",
+                "color": "#9d2ae9"
+            },
+            "67rdca3eeb7f6fgeed472012": {
+                "_id": "67rdca3eeb7f6fgeed472012",
+                "icon": "UilCoffee",
+                "color": "#e92a63"
+            },
+            "67rdca3eeb7f6fgeed472013": {
+                "_id": "67rdca3eeb7f6fgeed472013",
+                "icon": "UilGlassMartiniAlt",
+                "color": "#e9762a"
+            },
+            "67rdca3eeb7f6fgeed472014": {
+                "_id": "67rdca3eeb7f6fgeed472014",
+                "icon": "UilPlaneDeparture",
+                "color": "#c0e92a"
+            },
+            "67rdca3eeb7f6fgeed472015": {
+                "_id": "67rdca3eeb7f6fgeed472015",
+                "icon": "UilRestaurant",
+                "color": "#4ae92a"
+            },
+            "67rdca3eeb7f6fgeed472016": {
+                "_id": "67rdca3eeb7f6fgeed472016",
+                "icon": "UilFilm",
+                "color": "#2ae9b0"
+            },
+            "67rdca3eeb7f6fgeed472017": {
+                "_id": "67rdca3eeb7f6fgeed472017",
+                "icon": "UilMusic",
+                "color": "#2ac3e9"
+            },
+            "67rdca3eeb7f6fgeed472018": {
+                "_id": "67rdca3eeb7f6fgeed472018",
+                "icon": "UilCompass",
+                "color": "#2a6de9"
+            },
+            "67rdca3eeb7f6fgeed472019": {
+                "_id": "67rdca3eeb7f6fgeed472019",
+                "icon": "UilBooks",
+                "color": "#5d2ae9"
+            },
+            "67rdca3eeb7f6fgeed472020": {
+                "_id": "67rdca3eeb7f6fgeed472020",
+                "icon": "UilGraduationCap",
+                "color": "#832ae9"
+            },
+            "67rdca3eeb7f6fgeed472021": {
+                "_id": "67rdca3eeb7f6fgeed472021",
+                "icon": "UilPalette",
+                "color": "#b32ae9"
+            },
+            "67rdca3eeb7f6fgeed472022": {
+                "_id": "67rdca3eeb7f6fgeed472022",
+                "icon": "UilDrill",
+                "color": "#2ae980"
+            },
+            "67rdca3eeb7f6fgeed472023": {
+                "_id": "67rdca3eeb7f6fgeed472023",
+                "icon": "UilPhone",
+                "color": "#2ab3e9"
+            },
+            "67rdca3eeb7f6fgeed472024": {
+                "_id": "67rdca3eeb7f6fgeed472024",
+                "icon": "UilMoneybagAlt",
+                "color": "#92d000"
+            }
+        }
+    }
+]

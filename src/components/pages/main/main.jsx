@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react"
 import s from "./main.module.css"
 import commonStyle from "../../common/style.module.css"
+import API from "./../../../api"
 import RoundStat from "./statistic/roundStat/roundStat.main"
 import Button from "./button"
 import Statistic from "./statistic/bottomStatistic/statistic.main"
-import API from "./../../../api"
 import SortMenu from "./menus/sortMenu/sortMenu"
 import Menu from "./menus/menu"
 import Loader from "../../common/loader"
@@ -12,16 +12,45 @@ import { useImage } from "../../../hooks/useImage"
 import { showCoins } from "./../../../utils/showCoins"
 
 const Main = () => {
+    const [data, setData] = useState({ _id: "" })
+    const [loading, setLoading] = useState()
     const { getIcon } = useImage()
-    const [data, setData] = useState()
     const [reminder, setReminder] = useState(0)
     const [activeSortMenu, setActiveSortMenu] = useState(false)
     const [activeMenu, setActiveMenu] = useState(false)
     useEffect(() => {
-        API.data.fetchAll().then(data => {
-            setData(data)
+        setLoading(true)
+        API.users.getAllUsers().then(fetchDataUsers => {
+            setData(fetchDataUsers[0])
         })
     }, [])
+    useEffect(() => {
+        API.income.getIncomeTransactions().then(fetchData => {
+            const incomeData = fetchData.filter(
+                item => item._userId === data._id
+            )[0]
+            if (incomeData) {
+                setData(prevState => ({
+                    ...prevState,
+                    income: incomeData.categories
+                }))
+            }
+        })
+        API.spending.getSpendingTransactions().then(fetchData => {
+            const spendingData = fetchData.filter(
+                item => item._userId === data._id
+            )[0]
+            if (spendingData) {
+                setData(prevState => ({
+                    ...prevState,
+                    spending: spendingData.categories
+                }))
+            }
+        })
+        if (data.income && data.spending) {
+            console.log(loading)
+        }
+    }, [data._id])
     const listSortType = {
         day: "day",
         week: "week",
@@ -78,7 +107,7 @@ const Main = () => {
         <main
             className={`${s.main_layout} ${commonStyle.bg} d-flex flex-column justify-content-center align-items-center min-vh-100`}
         >
-            {data ? (
+            {data.income && data.spending && data._id !== "" ? (
                 <>
                     <section className={s.main}>
                         <nav className={s.navigation}>
@@ -126,8 +155,8 @@ const Main = () => {
                     </section>
                     <Statistic
                         data={{
-                            incomeCategories: data.incomeCategories,
-                            spendingCategories: data.spendingCategories
+                            incomeCategories: data.income,
+                            spendingCategories: data.spending
                         }}
                         reminder={reminder}
                     />

@@ -1,20 +1,5 @@
 import { getId } from "../../utils/createId"
 
-const users = [
-    {
-        _id: "001",
-        email: "asd@a.com",
-        chooseCurrency: {
-            country: "USA",
-            symbol: "$"
-        },
-        settings: {
-            language: "eng",
-            theme: "default"
-        }
-    }
-]
-
 const data = {
     incomeCategories: [
         {
@@ -195,13 +180,6 @@ const data = {
     }
 }
 
-const getAllUsers = () =>
-    new Promise(resolve => {
-        window.setTimeout(function () {
-            resolve(users)
-        }, 2000)
-    })
-
 const fetchAll = () =>
     new Promise(resolve => {
         window.setTimeout(function () {
@@ -210,6 +188,5 @@ const fetchAll = () =>
     })
 
 export default {
-    fetchAll,
-    getAllUsers
+    fetchAll
 }

@@ -1,18 +1,14 @@
-import { getId } from "../../utils/createId"
-
 const users = [
     {
-        _id: "001",
+        _id: "lu4EuFz_k8m2LXN1P2EVI",
         email: "asd@a.com",
         currency: {
-            chooseCurrency: {
-                country: "USA",
-                symbol: "$"
-            }
+            country: "USA",
+            symbol: "$"
         },
         settings: {
             language: "eng",
-            theme: "pink"
+            theme: "default"
         }
     }
 ]

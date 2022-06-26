@@ -2,15 +2,15 @@ import React from "react"
 import Category from "./category"
 import PropTypes from "prop-types"
 
-function CategoryList({ active, getIcon, data, allSpending }) {
+function CategoryList({ active, data, allSpending }) {
     const maxIndex = 7
     const filteredData = data.sort((a, b) => {
-        const aAllTransactions = a.transaction.reduce((prev, curr) => {
+        const aAllTransactions = a.transactions.reduce((prev, curr) => {
             let result = 0
             result = prev.value + curr.value
             return result
         })
-        const bAllTransactions = b.transaction.reduce((prev, curr) => {
+        const bAllTransactions = b.transactions.reduce((prev, curr) => {
             let result = 0
             result = prev.value + curr.value
             return result
@@ -23,7 +23,6 @@ function CategoryList({ active, getIcon, data, allSpending }) {
                 key={index} // заменить
                 data={item}
                 index={index}
-                getIcon={getIcon}
                 count={data.length}
                 active={active}
                 allSpending={allSpending}
@@ -36,7 +35,6 @@ function CategoryList({ active, getIcon, data, allSpending }) {
 
 CategoryList.propTypes = {
     active: PropTypes.bool,
-    getIcon: PropTypes.func,
     data: PropTypes.array,
     allSpending: PropTypes.number
 }

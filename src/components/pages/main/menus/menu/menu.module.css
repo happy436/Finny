@@ -23,6 +23,10 @@ a{
     display:flex;
 }
 
+.optionMenuItemText{
+    color:#fff;
+}
+
 .menu{
     position: absolute;
     top:0;

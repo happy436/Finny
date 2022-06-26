@@ -1,38 +1,38 @@
-import { getId } from "../../utils/create_id"
+import { nanoid } from "nanoid"
 
 const incomeTransactions = [
     {
-        _userId: "001",
+        _userId: "lu4EuFz_k8m2LXN1P2EVI",
         categories: [
             {
-                _id: getId(),
+                _id: nanoid(),
                 name: "Card",
                 categoryId: "67rdca3eeb7f6fgeed471818",
                 transactions: [
                     {
-                        _id: getId(),
+                        _id: nanoid(),
                         created_at: "1633576399367",
-                        value: 100
+                        value: 300
                     },
                     {
-                        _id: getId(),
+                        _id: nanoid(),
                         created_at: "1633576399367",
                         value: 100
                     }
                 ]
             },
             {
-                _id: getId(),
+                _id: nanoid(),
                 name: "Cash",
                 categoryId: "67rdca3eeb7f6fgeed471819",
                 transactions: [
                     {
-                        _id: getId(),
+                        _id: nanoid(),
                         created_at: "1633576399367",
                         value: 100
                     },
                     {
-                        _id: getId(),
+                        _id: nanoid(),
                         created_at: "1633576399367",
                         value: 100
                     }
@@ -44,34 +44,34 @@ const incomeTransactions = [
         _userId: "002",
         categories: [
             {
-                _id: getId(),
+                _id: nanoid(),
                 name: "Card",
                 categoryId: "67rdca3eeb7f6fgeed471818",
                 transactions: [
                     {
-                        _id: getId(),
+                        _id: nanoid(),
                         created_at: "1633576399367",
                         value: 100
                     },
                     {
-                        _id: getId(),
+                        _id: nanoid(),
                         created_at: "1633576399367",
                         value: 100
                     }
                 ]
             },
             {
-                _id: getId(),
+                _id: nanoid(),
                 name: "Cash",
                 categoryId: "67rdca3eeb7f6fgeed471819",
                 transactions: [
                     {
-                        _id: getId(),
+                        _id: nanoid(),
                         created_at: "1633576399367",
                         value: 100
                     },
                     {
-                        _id: getId(),
+                        _id: nanoid(),
                         created_at: "1633576399367",
                         value: 100
                     }
@@ -81,7 +81,7 @@ const incomeTransactions = [
     }
 ]
 
-const fetchAll = () =>
+const getIncomeTransactions = () =>
     new Promise(resolve => {
         window.setTimeout(function () {
             resolve(incomeTransactions)
@@ -89,5 +89,5 @@ const fetchAll = () =>
     })
 
 export default {
-    fetchAll
+    getIncomeTransactions
 }

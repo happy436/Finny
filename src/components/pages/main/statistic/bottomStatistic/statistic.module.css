@@ -128,4 +128,7 @@
         margin: 10px 60px 20px 60px;
         align-items: center;
     }
+    .statistic .categoryData .data{
+        margin: 10px 80px 10px 60px;
+    }
 }
