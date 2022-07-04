@@ -1,9 +1,9 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit"
-import transactionReducer from "./transaction"
+/* import transactionReducer from "./transaction" */
 import categoryReducer from "./category"
 
 const rootReducer = combineReducers({
-    transaction: transactionReducer,
+    /* transaction: transactionReducer, */
     category: categoryReducer
 })
 

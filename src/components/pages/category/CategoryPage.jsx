@@ -8,6 +8,8 @@ import TextField from "./components/textField"
 import CategoryList from "./components/categoryList"
 import { UilCheck } from "@iconscout/react-unicons"
 import { getId } from "../../../utils/createId"
+import { useDispatch } from "react-redux"
+import { loadCategoryList } from "./../../../store/category"
 
 function CategoryEditPage() {
     const { type } = useParams()
@@ -15,6 +17,10 @@ function CategoryEditPage() {
     const [activeSubmitButton, setActiveSubmit] = useState(null)
     const [pageType] = useState(type === "income" ? type : "spending")
     const [categoryList, setCategoryList] = useState([])
+    const dispatch = useDispatch()
+    useEffect(() => {
+        dispatch(loadCategoryList())
+    }, [])
     const [category, setCategory] = useState({ name: "", _id: null })
     const handleChange = useCallback(target => {
         setCategory(prevState => ({
@@ -22,7 +28,7 @@ function CategoryEditPage() {
             [target.name]: target.value
         }))
     }, [])
-    const handleSubmit = (e) => {
+    const handleSubmit = e => {
         e.preventDefault()
         const data = {
             _id: getId(),
@@ -42,7 +48,10 @@ function CategoryEditPage() {
     }, [])
     useEffect(() => {
         if (activeCategory !== null) {
-            handleChange({ name: "_id", value: categoryList[activeCategory]._id })
+            handleChange({
+                name: "_id",
+                value: categoryList[activeCategory]._id
+            })
         }
     }, [activeCategory])
     useEffect(() => {
@@ -52,14 +61,18 @@ function CategoryEditPage() {
             setActiveSubmit(false)
         }
     }, [category])
-    const handleClick = (index) => {
+    const handleClick = index => {
         setActiveCategory(index)
     }
     return (
         <main className={`${s.wrapper} ${commonStyle.bg}`}>
             <CardWrapper>
                 <form className={s.form} onSubmit={handleSubmit}>
-                    <h2 className={s.title}>{pageType === "income" ? "Income Categories" : "Add spending category"}</h2>
+                    <h2 className={s.title}>
+                        {pageType === "income"
+                            ? "Income Categories"
+                            : "Add spending category"}
+                    </h2>
                     <TextField onChange={handleChange} name={"name"} />
                     <CategoryList
                         activeCategory={activeCategory}
@@ -67,7 +80,9 @@ function CategoryEditPage() {
                         onClick={handleClick}
                     />
                     <button
-                        className={`${s.submit} ${activeSubmitButton === true ? s.active : null}`}
+                        className={`${s.submit} ${
+                            activeSubmitButton === true ? s.active : null
+                        }`}
                         type="submit"
                     >
                         <UilCheck />

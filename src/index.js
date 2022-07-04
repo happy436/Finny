@@ -1,18 +1,25 @@
 import React from "react"
-import ReactDOM from "react-dom/client"
 import "./index.css"
 import App from "./App"
 import reportWebVitals from "./reportWebVitals"
-import { BrowserRouter } from "react-router-dom"
+import { Router } from "react-router-dom"
 import "bootstrap/dist/css/bootstrap.min.css"
+import { Provider } from "react-redux"
+import { createRoot } from "react-dom/client"
+import { createStore } from "./store/createStore"
+import history from "./utils/history"
 
-const root = ReactDOM.createRoot(document.getElementById("root"))
+const root = createRoot(document.getElementById("root"))
+const store = createStore()
+
 root.render(
-    <BrowserRouter>
-        <React.StrictMode>
-            <App />
-        </React.StrictMode>
-    </BrowserRouter>
+    <React.StrictMode>
+        <Provider store={store}>
+            <Router history={history}>
+                <App />
+            </Router>
+        </Provider>
+    </React.StrictMode>
 )
 
 reportWebVitals()

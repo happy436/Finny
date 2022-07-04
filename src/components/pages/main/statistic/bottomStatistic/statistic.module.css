@@ -8,6 +8,7 @@
     position: absolute;
     display:flex;
     flex-direction: column; 
+    background-color:rgba(250, 255, 27, 0.67);
 }
 
 .wrapper{
