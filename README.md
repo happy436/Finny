@@ -10,20 +10,20 @@
 
 ## Tasks for the project
 
-[x] ~~Idea~~
-[x] ~~[Design](https://www.figma.com/file/2Q2l4hS8YAuVbrewjkXODJ/Finance-App?node-id=0%3A1)~~
-- [x] ~~Mobile~~
-- [x] ~~Tablet~~
-- [x] ~~Laptop~~
-[x] ~~create-react-app~~
-[ ] create Firebase database
-[ ] Sorting or filtering
-[ ] Implement all components
-[ ] Implement routing
-[ ] Logging and registration
-[ ] Debugging
-[ ] Testing
-[ ] Release
+ - [x] ~~Idea~~
+ - [x] ~~[Design](https://www.figma.com/file/2Q2l4hS8YAuVbrewjkXODJ/Finance-App?node-id=0%3A1)~~
+   - [x] ~~Mobile~~
+   - [x] ~~Tablet~~
+   - [x] ~~Laptop~~
+ - [x] ~~create-react-app~~
+ - [ ] create Firebase database
+ - [ ] Sorting or filtering
+ - [ ] Implement all components
+ - [ ] Implement routing
+ - [ ] Logging and registration
+ - [ ] Debugging
+ - [ ] Testing
+ - [ ] Release
 
 ---
 
