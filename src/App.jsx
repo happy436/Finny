@@ -7,7 +7,6 @@ import TransactionPage from "./components/pages/transaction"
 import ImageProvider from "./hooks/useImage"
 import { ToastContainer } from "react-toastify"
 import "react-toastify/dist/ReactToastify.css"
-import Test from "./Test.test"
 import CategoryProvider from "./hooks/useCategories"
 
 function App() {
@@ -25,7 +24,6 @@ function App() {
                             path="/transaction/:type?"
                             component={TransactionPage}
                         />
-                        <Route path="/test" component={Test} />
                         <Route path="/" exact component={Main} />
                         {/* <Redirect to="/"/> */}
                     </ImageProvider>
